@@ -1,3 +1,7 @@
+mg_front:
+    resource: "@MGFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ns_catalog:
     resource: "@NSCatalogBundle/Resources/config/routing.yml"
     prefix:   /

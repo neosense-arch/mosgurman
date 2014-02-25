@@ -1,5 +1,4 @@
 <?php
-
 use NS\CoreBundle\CoreKernel;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -15,6 +14,7 @@ class AppKernel extends CoreKernel
 	protected function getUserBundles()
 	{
 		return array(
+            new Mosgurman\FrontBundle\MGFrontBundle(),
 		);
 	}
 }

@@ -1,0 +1,7 @@
+parameters:
+#    mg_front.example.class: Mosgurman\FrontBundle\Example
+
+services:
+#    mg_front.example:
+#        class: %mg_front.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
