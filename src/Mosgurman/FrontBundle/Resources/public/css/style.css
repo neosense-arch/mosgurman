@@ -117,12 +117,12 @@ body {
 	padding-left:13px;
 	margin-right:12px;
 }
-.menu ul li.first{
-	background:none;
-	padding:0;
+.menu ul :first-child {
+    background:none;
+    padding:0;
 }
-.menu ul li.last{
-	margin:0;
+.menu ul :last-child {
+    margin: 0;
 }
 .menu ul li a{
 	display:block;

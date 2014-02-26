@@ -1,0 +1,47 @@
+<div id="top">
+  <div class="top-conteyner">
+    <div class="logo">
+      <a href="#"></a>
+    </div>
+    <div class="top-block">
+      <div class="menu-soc">
+        <div class="menu">
+          <ul>
+            {% for item in menu.children %}
+              {% if item.displayed %}
+              <li>
+                <a href="{{ item.uri }}">{{ item.label }}</a>
+              </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="soc">
+          <ul>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon2.png') }}" width="9" height="10" alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon3.png') }}" width="7" height="15" alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon4.png') }}" width="9" height="15" alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon5.png') }}" width="14" height="13" alt="image description"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tel-delivery">
+        <div class="tel">
+          <strong><span>(495)</span> 723-60-57; 723-60-87</strong>
+        </div>
+        <div class="delivery">
+          <p>Доставляем бесплатно горячими</p>
+        </div>
+      </div>
+    </div>
+    <div class="cart">
+      <div class="number">
+        <a href="#">10</a>
+      </div>
+      <div class="cart-block">
+        <p>Ваша корзина!</p>
+        <a href="#">Оформить</a>
+      </div>
+    </div>
+  </div>
+</div>
