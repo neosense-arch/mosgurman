@@ -1,7 +1,7 @@
 templates:
     -
         path:    "NSCmsBundle:Pages:page.html.twig"
-        title:   "Default page template"
+        title:   "Шаблон для всех страниц"
         default: true
         areas:
             -

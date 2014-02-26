@@ -1,0 +1,8 @@
+.search-form input[type="text"] {
+	height:28px;
+	padding:15px 40px 0 13px;
+}
+.add-review input[type="text"] {
+	padding:11px 14px 0;
+	height:32px;
+}
