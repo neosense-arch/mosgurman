@@ -9,8 +9,20 @@ templates:
                 title: "Верхняя панель"
                 fixed: true
             -
-                name: left
-                title: "Левая панель"
+                name: slider
+                title: "Панель заголовка страницы"
+            -
+                name: catalog_menu
+                title: "Меню категорий из каталога"
+                fixed: true
             -
                 name: content
                 title: "Контентная область"
+            -
+                name: copyright
+                title: "Текст копирайта"
+                fixed: true
+            -
+                name: footer_menu
+                title: "Меню в подвале"
+                fixed: true

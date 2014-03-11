@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ccd4929063dd0510a22ddd02c4678151",
+    "hash": "4e3b59da4839a5a399330ab5ff56dda8",
     "packages": [
         {
             "name": "avalanche123/imagine-bundle",
@@ -2257,12 +2257,12 @@
         },
         {
             "name": "neosense/admin-bundle",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "target-dir": "NS/AdminBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsadminbundle.git",
-                "reference": "a544e69283dbae81862c5ca94bcff05777888e98"
+                "reference": "601a53fcd1ac125c39555eb49a9d218d9a5ff86c"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2286,16 +2286,16 @@
             "keywords": [
                 "admin"
             ],
-            "time": "2014-02-21 22:34:05"
+            "time": "2014-03-10 14:22:43"
         },
         {
             "name": "neosense/cache-bundle",
-            "version": "v1.1.0",
+            "version": "1.2.0",
             "target-dir": "NS/CacheBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscachebundle.git",
-                "reference": "8bd0a1b5fbe0c6209463dbe99ae46316c03c564a"
+                "reference": "eeb407008a591f5380e70f7f72702e33ebb01169"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2315,16 +2315,16 @@
                 }
             ],
             "description": "NS Cache bundle",
-            "time": "2013-11-22 09:01:29"
+            "time": "2014-02-26 12:37:54"
         },
         {
             "name": "neosense/catalog-bundle",
-            "version": "1.7.3",
+            "version": "1.8.3",
             "target-dir": "NS/CatalogBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscatalogbundle.git",
-                "reference": "95753ce24eec876f0f7d6945c775dac1bbaa679d"
+                "reference": "01675ce49bbdc7a6149e3b5eef2d5e7456539884"
             },
             "require": {
                 "neosense/cms-bundle": ">=1.5.0",
@@ -2349,16 +2349,16 @@
                 "catalog",
                 "eshop"
             ],
-            "time": "2014-02-19 17:52:35"
+            "time": "2014-03-10 12:35:08"
         },
         {
             "name": "neosense/cms-bundle",
-            "version": "1.10.2",
+            "version": "1.11.2",
             "target-dir": "NS/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscmsbundle.git",
-                "reference": "6357c41d4e86aedbac08929f46fb6ccd981a350e"
+                "reference": "8fcded6475bb8b3a492a084a1fc75ffdef1d2f9a"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2383,16 +2383,16 @@
                 "blocks",
                 "cms"
             ],
-            "time": "2014-02-20 22:22:19"
+            "time": "2014-03-10 15:45:02"
         },
         {
             "name": "neosense/core-bundle",
-            "version": "1.13.0",
+            "version": "1.15.1",
             "target-dir": "NS/CoreBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscorebundle.git",
-                "reference": "b168fc3342d96317a5a6569ed873847b2a5f7baf"
+                "reference": "759e8c991101ae97d5ba8883d24a51cc8dc2a6cc"
             },
             "require": {
                 "avalanche123/imagine-bundle": "2.1.*",
@@ -2413,10 +2413,10 @@
                 "knplabs/knp-paginator-bundle": "2.4.*",
                 "liuggio/excelbundle": "1.0.*",
                 "mopa/bootstrap-bundle": "2.2.*@alpha",
-                "neosense/admin-bundle": "1.5.*",
-                "neosense/cache-bundle": "1.1.*",
-                "neosense/catalog-bundle": "1.7.*",
-                "neosense/cms-bundle": "1.10.*",
+                "neosense/admin-bundle": "1.6.*",
+                "neosense/cache-bundle": "1.2.*",
+                "neosense/catalog-bundle": "1.8.*",
+                "neosense/cms-bundle": "1.11.*",
                 "neosense/deploy-bundle": "1.1.*",
                 "neosense/documents-bundle": "1.1.*",
                 "neosense/feedback-bundle": "1.1.*",
@@ -2428,7 +2428,7 @@
                 "neosense/search-bundle": "1.2.*",
                 "neosense/seo-bundle": "1.0.*",
                 "neosense/shop-bundle": "1.4.*",
-                "neosense/user-bundle": "1.4.*",
+                "neosense/user-bundle": "1.5.*",
                 "php": ">=5.3.3",
                 "sensio/distribution-bundle": "~2.3",
                 "sensio/framework-extra-bundle": "~3.0",
@@ -2459,7 +2459,7 @@
                 }
             ],
             "description": "NS Core Bundle",
-            "time": "2014-02-24 21:52:55"
+            "time": "2014-03-10 15:48:13"
         },
         {
             "name": "neosense/deploy-bundle",
@@ -2566,12 +2566,12 @@
         },
         {
             "name": "neosense/gallery-bundle",
-            "version": "v1.1.0",
+            "version": "1.1.1",
             "target-dir": "NS/GalleryBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsgallerybundle.git",
-                "reference": "7181c7ff92b07732ca45e613e2500a36d7fbefe4"
+                "reference": "b64748b6dad36e53c9056c2756e8fa7169cf1d1b"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2595,7 +2595,7 @@
             "keywords": [
                 "gallery"
             ],
-            "time": "2013-11-06 18:54:39"
+            "time": "2014-03-10 12:25:30"
         },
         {
             "name": "neosense/news-bundle",
@@ -2827,12 +2827,12 @@
         },
         {
             "name": "neosense/user-bundle",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "target-dir": "NS/UserBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsuserbundle.git",
-                "reference": "fde72bc80ac9fc80886f4f1479b43c2dc9a48d7a"
+                "reference": "1a45071f5628e19bcc20ce292258bcbe6b29c4d3"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2856,7 +2856,7 @@
                 "cms",
                 "user"
             ],
-            "time": "2014-02-14 10:42:44"
+            "time": "2014-03-10 13:30:18"
         },
         {
             "name": "phpoffice/phpexcel",

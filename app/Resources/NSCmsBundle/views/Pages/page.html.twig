@@ -3,3 +3,54 @@
 {% block top %}
   {{ ns_cms_area(blocks, 'header') }}
 {% endblock top %}
+
+{% block slider %}
+  {{ ns_cms_area(blocks, 'slider') }}
+{% endblock slider %}
+
+{% block nav %}
+  <div class="nav">
+    {{ ns_cms_area(blocks, 'catalog_menu') }}
+  </div>
+{% endblock nav %}
+
+{% block main %}
+  <div id="main">
+    <div class="block-current-page">
+      {{ ns_cms_area(blocks, 'content') }}
+    </div>
+  </div>
+{% endblock main %}
+
+{% block footer %}
+  <div id="footer">
+    <div class="footer-conteyner">
+      <div class="footer-left">
+        {{ ns_cms_area(blocks, 'copyright') }}
+      </div>
+      <div class="footer-right">
+        <div class="footer-nav">
+          {{ ns_cms_area(blocks, 'footer_menu') }}
+        </div>
+        <div class="soc-img">
+          <div class="footer-soc">
+            <ul>
+              <li><a href="#"><img src="{{ asset('bundles/mgfront/images/soc1.png') }}" width="102" height="20"
+                                   alt="image description"></a></li>
+              <li><a href="#"><img src="{{ asset('bundles/mgfront/images/soc2.png') }}" width="77" height="20"
+                                   alt="image description"></a></li>
+              <li><a href="#"><img src="{{ asset('bundles/mgfront/images/soc3.png') }}" width="74" height="20"
+                                   alt="image description"></a></li>
+              <li><a href="#"><img src="{{ asset('bundles/mgfront/images/soc4.png') }}" width="32" height="20"
+                                   alt="image description"></a></li>
+            </ul>
+          </div>
+          <div class="footer-img">
+            <img src="{{ asset('bundles/mgfront/images/img-footer.png') }}" width="104" height="24"
+                 alt="image description">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock footer %}

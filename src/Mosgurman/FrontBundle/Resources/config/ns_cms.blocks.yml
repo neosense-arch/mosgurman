@@ -1,0 +1,4 @@
+blocks:
+    -
+        name: MGFrontBundle:Blocks:sliderBlock
+        title: Слайдер с изображениями

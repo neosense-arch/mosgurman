@@ -1,7 +1,8 @@
 parameters:
-#    mg_front.example.class: Mosgurman\FrontBundle\Example
+    mg_front.catalog.item_settings_type.class: Mosgurman\FrontBundle\Catalog\ItemSettingsType
 
 services:
-#    mg_front.example:
-#        class: %mg_front.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    mg_front.catalog.item_settings_type:
+        class: %mg_front.catalog.item_settings_type.class%
+        tags:
+            - { name: 'form.type', alias: 'mg_front_catalog_item_settings_type' }

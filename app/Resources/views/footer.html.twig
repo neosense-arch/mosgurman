@@ -1,19 +1,11 @@
 <div id="footer">
   <div class="footer-conteyner">
     <div class="footer-left">
-      <span><strong>© 2014 МосГурман</strong> — осетинские пироги с душой!</span>
-
-      <p>Все права на материалы, находящиеся на сайте, охраняются в соответствии с законодательством РФ. <br>
-        При любом использовании материалов сайта, письменное согласие обязательно.</p>
+      {{ ns_cms_area(blocks, 'copyright') }}
     </div>
     <div class="footer-right">
       <div class="footer-nav">
-        <ul>
-          <li><a href="#">О компании</a></li>
-          <li><a href="#">Оплата и доставка</a></li>
-          <li><a href="#">Контакты</a></li>
-          <li class="last"><a href="#">Организация выездных банкетов</a></li>
-        </ul>
+        {{ ns_cms_area(blocks, 'footer_menu') }}
       </div>
       <div class="soc-img">
         <div class="footer-soc">

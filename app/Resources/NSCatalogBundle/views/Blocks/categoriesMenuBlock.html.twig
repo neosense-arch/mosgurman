@@ -1,0 +1,8 @@
+<ul>
+  {% for item in menu.children if item.displayed %}
+  <li>
+    <a href="{{ item.uri }}">{{ item.label }}</a>
+    <span></span>
+  </li>
+  {% endfor %}
+</ul>
