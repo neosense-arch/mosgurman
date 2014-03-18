@@ -14,7 +14,7 @@
         <div class="product-block-left">
           <div class="pikachoose">
             <div class="icon3">
-              <img src="{{ asset('bundles/mgfront/images/icon12.png') }}" width="48" height="48">
+              <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}">
             </div>
             <ul id="pikame">
               {% if item.settings.photos|length > 1 %}

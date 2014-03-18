@@ -9,6 +9,7 @@
 
 namespace Mosgurman\FrontBundle\Catalog;
 
+use Mosgurman\FrontBundle\Catalog\ItemSettingsModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -18,6 +19,26 @@ class ItemSettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('group', 'choice', array(
+                'label'       => 'Группа товаров',
+                'required'    => false,
+                'empty_value' => false,
+                'choices'     => array(
+                    ItemSettingsModel::GROUP_ALL    => 'Все',
+                    ItemSettingsModel::GROUP_HOT    => 'Острые',
+                    ItemSettingsModel::GROUP_NOMEAT => 'Постные',
+                    ItemSettingsModel::GROUP_SWEET  => 'Сладкие',
+                    ItemSettingsModel::GROUP_SEASON => 'Сезонные',
+                ),
+            ))
+            ->add('isNew', 'checkbox', array(
+                'label'    => 'Новинка?',
+                'required' => false,
+            ))
+            ->add('isSale', 'checkbox', array(
+                'label'    => 'Скидка?',
+                'required' => false,
+            ))
             ->add('brief', 'textarea', array(
                 'label'    => 'Описание',
                 'required' => false,

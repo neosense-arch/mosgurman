@@ -19,6 +19,14 @@ use NS\CatalogBundle\Model\AbstractSettings;
  */
 class ItemSettingsModel extends AbstractSettings
 {
+    const
+        GROUP_ALL    = 'all',
+        GROUP_HOT    = 'hot',
+        GROUP_NOMEAT = 'nomeat',
+        GROUP_SWEET  = 'sweet',
+        GROUP_SEASON = 'season'
+    ;
+
     /**
      * @var string
      */
@@ -48,6 +56,92 @@ class ItemSettingsModel extends AbstractSettings
      * @var string
      */
     protected $pricesString = '';
+
+    /**
+     * @var string
+     */
+    protected $group;
+
+    /**
+     * @var bool
+     */
+    protected $isNew;
+
+    /**
+     * @var bool
+     */
+    protected $isSale;
+
+    public function __construct()
+    {
+        $this
+            ->setIsNew(false)
+            ->setIsSale(false)
+            ->setGroup(self::GROUP_ALL)
+        ;
+    }
+
+    /**
+     * @param mixed $group
+     * @throws \InvalidArgumentException
+     * @return $this
+     */
+    public function setGroup($group)
+    {
+        if (!in_array($group, $this->getGroups())) {
+            throw new \InvalidArgumentException();
+        }
+
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param mixed $isNew
+     * @return $this
+     */
+    public function setIsNew($isNew)
+    {
+        $this->isNew = (bool)$isNew;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsNew()
+    {
+        return $this->isNew;
+    }
+
+    /**
+     * @param mixed $isSale
+     * @return $this
+     */
+    public function setIsSale($isSale)
+    {
+        $this->isSale = (bool)$isSale;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsSale()
+    {
+        return $this->isSale;
+    }
 
     /**
      * @param array $prices
@@ -182,5 +276,19 @@ class ItemSettingsModel extends AbstractSettings
         }
 
         parent::setSetting($name, $value);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getGroups()
+    {
+        return array(
+            self::GROUP_ALL,
+            self::GROUP_NOMEAT,
+            self::GROUP_SWEET,
+            self::GROUP_SEASON,
+            self::GROUP_HOT,
+        );
     }
 }
