@@ -11,6 +11,16 @@
     <!--[if IE 8]>
     <link href="{{ asset('bundles/mgfront/css/ie8.css') }}" rel="stylesheet" media="all"/><![endif]-->
   {% endblock stylesheets %}
+
+  {% block javascripts %}
+    {% javascripts
+    '@MGFrontBundle/Resources/public/js/vendor/jquery-min.js'
+    '@MGFrontBundle/Resources/public/js/vendor/underscore-min.js'
+    '@MGFrontBundle/Resources/public/js/vendor/backbone-min.js'
+    '@MGFrontBundle/Resources/public/js/plugins/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock javascripts %}
 </head>
 <body>
 {% block body %}
@@ -39,12 +49,6 @@
   {% block review %}
     {% include "::review.html.twig" %}
   {% endblock review %}
-
-{% block javascripts %}
-  {% javascripts '@MGFrontBundle/Resources/public/js/*' %}
-  <script src="{{ asset_url }}"></script>
-  {% endjavascripts %}
-{% endblock javascripts %}
 {% endblock body %}
 </body>
 </html>

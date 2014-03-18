@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.yml }
     - { resource: @NSCoreBundle/Resources/config/core-config.yml }
 
+assetic:
+    bundles: [ NSCatalogBundle ]
+
 # Avalanche Imagine
 avalanche_imagine:
     source_root:  %kernel.root_dir%/../web

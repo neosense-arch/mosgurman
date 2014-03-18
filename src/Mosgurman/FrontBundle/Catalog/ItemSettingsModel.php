@@ -9,35 +9,77 @@
 
 namespace Mosgurman\FrontBundle\Catalog;
 
+use Doctrine\ORM;
 use NS\CatalogBundle\Model\AbstractSettings;
-use NS\ShopBundle\Item\Priceable;
 
 /**
  * Class ItemSettingsModel
  * @package Mosgurman\FrontBundle\Catalog
  * @author Yury Smidovich <dev@stmol.me>
  */
-class ItemSettingsModel extends AbstractSettings implements Priceable
+class ItemSettingsModel extends AbstractSettings
 {
     /**
      * @var string
      */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $brief;
+    protected $brief;
 
     /**
      * @var float
      */
-    private $price;
+    protected $price;
 
     /**
      * @var string[]
      */
     protected $photos = array();
+
+    /**
+     * @var
+     */
+    protected $photo;
+
+    /**
+     * @var array
+     */
+    private $prices = array();
+
+    /**
+     * @var string
+     */
+    protected $pricesString = '';
+
+    /**
+     * @param array $prices
+     */
+    public function setPrices($prices)
+    {
+        $this->prices = $prices;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPrices()
+    {
+        return $this->prices;
+    }
+
+    /**
+     * @param string $pricesString
+     */
+    public function setPricesString($pricesString)
+    {
+        $this->pricesString = $this->setPrices(json_decode($pricesString, true));
+    }
+
+    /**
+     * @return string
+     */
+    public function getPricesString()
+    {
+        return json_encode($this->getPrices());
+    }
 
     /**
      * @param mixed $brief
@@ -59,22 +101,14 @@ class ItemSettingsModel extends AbstractSettings implements Priceable
     }
 
     /**
-     * @param mixed $title
+     * @param $price
      * @return $this
      */
-    public function setTitle($title)
+    public function setPrice($price)
     {
-        $this->title = $title;
+        $this->price = $price;
 
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**

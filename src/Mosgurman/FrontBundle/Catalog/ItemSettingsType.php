@@ -20,7 +20,7 @@ class ItemSettingsType extends AbstractType
         $builder
             ->add('brief', 'textarea', array(
                 'label'    => 'Описание',
-                'required' => 'false',
+                'required' => false,
             ))
             ->add('price', 'integer', array(
                 'label'    => 'Стоимость',
@@ -29,6 +29,12 @@ class ItemSettingsType extends AbstractType
             ->add('photos', 'ns_multi_image', array(
                 'label'    => 'Фото',
                 'required' => false
+            ))
+            ->add('prices', 'ns_catalog_table', array(
+                'label'    => 'Торговые предложения',
+                'required' => false,
+                'type'     => 'sellOffer',
+                'rows'     => array('weight', 'price'),
             ))
         ;
     }
@@ -39,7 +45,7 @@ class ItemSettingsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MG\FrontBundle\Catalog\ItemSettingsModel'
+            'data_class' => 'Mosgurman\FrontBundle\Catalog\ItemSettingsModel'
         ));
     }
 
