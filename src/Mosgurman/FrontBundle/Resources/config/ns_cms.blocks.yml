@@ -2,3 +2,6 @@ blocks:
     -
         name: MGFrontBundle:Blocks:sliderBlock
         title: Слайдер с изображениями
+    -
+        name: MGFrontBundle:Blocks:cartBlock
+        title: Корзина посетителя

@@ -25,4 +25,12 @@ class BlocksController extends Controller
     {
         return $this->render('MGFrontBundle:Blocks:sliderBlock.html.twig');
     }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cartBlockAction()
+    {
+        return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig');
+    }
 }
