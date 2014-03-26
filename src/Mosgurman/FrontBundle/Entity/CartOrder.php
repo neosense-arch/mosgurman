@@ -25,14 +25,14 @@ class CartOrder
     /**
      * @var integer
      *
-     * @ORM\Column(name="count", type="smallint")
+     * @ORM\Column(name="count", type="smallint", nullable=true)
      */
     private $count;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="weight", type="smallint")
+     * @ORM\Column(name="weight", type="smallint", nullable=true)
      */
     private $weight;
 
