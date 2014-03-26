@@ -10,6 +10,7 @@
 namespace Mosgurman\FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BlocksController
@@ -27,10 +28,26 @@ class BlocksController extends Controller
     }
 
     /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function cartBlockAction()
+    public function cartBlockAction(Request $request)
     {
-        return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig');
+        if (!$request->getSession()->has('customer_id')) {
+            return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig');
+        }
+
+        $customerId = $request->getSession()->get('customer_id');
+        $customer = $this->get('mg_front.manager.customer')->findCustomerByUniqueId($customerId);
+
+        if (!$customer) {
+            return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig');
+        }
+
+        $cartOrders = $this->get('mg_front.manager.cart_order')->findCartOrdersByCustomer($customer);
+
+        return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig', array(
+            'cart_orders' => $cartOrders,
+        ));
     }
 }

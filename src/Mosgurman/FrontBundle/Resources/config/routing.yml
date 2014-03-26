@@ -1,3 +1,19 @@
-mg_front_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: MGFrontBundle:Default:index }
+mg_product_add:
+    path: /cartorder/products
+    methods: [POST]
+    defaults:
+        _controller: MGFrontBundle:Cart:addProduct
+
+mg_product_delete:
+    path: /cartorder/products/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: MGFrontBundle:Cart:deleteProduct
+    requirements:
+        id: \d+
+
+mg_product_count:
+    path: /cartorder/count
+    methods: [GET]
+    defaults:
+        _controller: MGFrontBundle:Cart:productCount

@@ -1,0 +1,7 @@
+<div class="number">
+  <a href="#">{{ product_count|default(0) }}</a>
+</div>
+<div class="cart-block">
+  <p>Ваша корзина!</p>
+  <a href="{{ url('ns_cms_page_name', { name: 'cart' } ) }}">Оформить</a>
+</div>

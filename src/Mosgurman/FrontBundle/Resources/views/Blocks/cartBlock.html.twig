@@ -1,44 +1,87 @@
 <div class="basket">
-  <div class="basket-block">
-    <div class="icon icon3">
-      <img src="images/icon7.png" width="24" height="24" alt="image description">
-    </div>
-    <div class="block-img">
-      <div class="img-basket">
-        <img src="images/img7.jpg" width="147" height="84" alt="image description">
+  {% if cart_orders is not defined %}
+    <h1>Корзина пуста</h1>
+  {% else %}
+    {% for order in cart_orders %}
+      <div class="basket-block" data-order-id="{{ order.id }}" data-cost="">
+        <div class="icon icon3">
+          {% if order.item.settings.group %}
+            <img src="{{ asset('bundles/mgfront/images/' ~ order.item.settings.group|default('all') ~ '.png') }}"/>
+          {% endif %}
+        </div>
+        <div class="block-img">
+          <div class="img-basket">
+            <a href="{{ url('ns_catalog_item', { 'categorySlug': order.item.category.slug, 'itemSlug': order.item.slug}) }}">
+              <img src="{{ '/upload/j/' ~ order.item.settings.photo }}"
+                   alt="{{ order.item.title }}"
+                   width="147" height="84"/>
+            </a>
+          </div>
+        </div>
+        <div class="basket-description">
+          <span>{{ order.item.title }}</span>
+          <p>{{ order.item.settings.brief[:130] ~ '...' }}</p>
+        </div>
+        {% if order.weight %}
+        <div class="weight">
+          <b>Вес:</b>
+          <select id="weight-selector" {# title="1000 г." #}>
+            {% for price in order.item.settings.prices %}
+              <option {% if order.weight == price.weight %}selected="selected"{% endif %} data-price="{{ price.price }}"
+                      value="{{ price.weight }}">{{ price.weight }} г.</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+        {% if order.count %}
+        <div class="weight quantity">
+          <b>Кол-во:</b>
+          <select id="count-selector" {# title="5 шт." #}>
+            {% for i in range(1,5) %}
+            <option {% if order.count == i %}selected="selected"{% endif %} value="{{ i }}">{{ i }} шт.</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+        <div class="cost">
+          <b>Цена:</b>
+          <span>- руб</span>
+        </div>
+        <div class="delete">
+          <a href="#">Удалить</a>
+        </div>
       </div>
-    </div>
-    <div class="basket-description">
-      <span>С мясом "Традиционный"</span>
-
-      <p>Lorem ipsum dolor sit amet, consectetur <br>
-        adipisicing elit, sed do eiusmod tempor <br>
-        incididunt ut labore et dolore magna aliqua...</p>
-    </div>
-    <div class="weight">
-      <b>Вес:</b>
-      <select id="seldef1" title="1000 г.">
-        <option>1200 г.</option>
-        <option>1400 г.</option>
-      </select>
-    </div>
-    <div class="weight quantity">
-      <b>Кол-во:</b>
-      <select id="seldef1" title="5 шт.">
-        <option>6 шт.</option>
-        <option>7 шт.</option>
-      </select>
-    </div>
-    <div class="cost">
-      <b>Цена:</b>
-      <span>600 руб</span>
-    </div>
-    <div class="delete">
-      <a href="#">Удалить</a>
-    </div>
-  </div>
+    {% endfor %}
+  {% endif %}
   <div class="in-total">
-    <span>Итого: <strong>2400 руб</strong></span>
+    <span>Итого: <strong>- руб</strong></span>
     <a href="#">Оформить заказ</a>
   </div>
 </div>
+
+{% javascripts
+  '@MGFrontBundle/Resources/public/js/app/ProductModel.js'
+  '@MGFrontBundle/Resources/public/js/app/CartView.js' %}
+  <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+  var products = new MGApp.ProductCollection();
+  products.url = '{{ path('mg_product_add') }}';
+
+  {% if cart_orders is defined %}
+    {% for order in cart_orders %}
+      products.add({ id: {{ order.id }} });
+    {% endfor %}
+  {% endif %}
+
+  new MGApp.CartView({
+    el: $('.basket'),
+    collection: products
+  });
+
+  // replace custom forms
+  jcf.lib.domReady(function(){
+    jcf.customForms.replaceAll();
+  });
+</script>

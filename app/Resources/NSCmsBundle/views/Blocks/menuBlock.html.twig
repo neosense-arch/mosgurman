@@ -9,19 +9,23 @@
           <ul>
             {% for item in menu.children %}
               {% if item.displayed %}
-              <li>
-                <a href="{{ item.uri }}">{{ item.label }}</a>
-              </li>
+                <li>
+                  <a href="{{ item.uri }}">{{ item.label }}</a>
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
         </div>
         <div class="soc">
           <ul>
-            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon2.png') }}" width="9" height="10" alt="image description"></a></li>
-            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon3.png') }}" width="7" height="15" alt="image description"></a></li>
-            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon4.png') }}" width="9" height="15" alt="image description"></a></li>
-            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon5.png') }}" width="14" height="13" alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon2.png') }}" width="9" height="10"
+                                 alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon3.png') }}" width="7" height="15"
+                                 alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon4.png') }}" width="9" height="15"
+                                 alt="image description"></a></li>
+            <li><a href="#"><img src="{{ asset('bundles/mgfront/images/icon5.png') }}" width="14" height="13"
+                                 alt="image description"></a></li>
           </ul>
         </div>
       </div>
@@ -35,13 +39,7 @@
       </div>
     </div>
     <div class="cart">
-      <div class="number">
-        <a href="#">10</a>
-      </div>
-      <div class="cart-block">
-        <p>Ваша корзина!</p>
-        <a href="{{ url('ns_cms_page_name', { name: 'cart' } ) }}">Оформить</a>
-      </div>
+      {{ render(controller('MGFrontBundle:Cart:productCount')) }}
     </div>
   </div>
 </div>

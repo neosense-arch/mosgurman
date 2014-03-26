@@ -3,7 +3,7 @@ imports:
     - { resource: @NSCoreBundle/Resources/config/core-config.yml }
 
 assetic:
-    bundles: [ NSCatalogBundle ]
+    bundles: [ NSCatalogBundle, MGFrontBundle ]
 
 # Avalanche Imagine
 avalanche_imagine:

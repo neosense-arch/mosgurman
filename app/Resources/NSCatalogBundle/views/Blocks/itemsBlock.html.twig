@@ -120,7 +120,7 @@
                           <div class="drop">
                             <span>{{ price.weight }} г</span>
                             <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}">
+                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
                               <li><a href="#">1 пирог</a></li>
                               <li><a href="#">2 пирога</a></li>
                               <li><a href="#">3 пирога</a></li>
@@ -401,25 +401,21 @@
   {#</div>#}
 </div>
 
-{#{% javascripts#}
-{#'@MGFrontBundle/Resources/public/js/app/ProductModel.js'#}
-{#'@MGFrontBundle/Resources/public/js/app/CatalogView.js' %}#}
-{#<script src="{{ asset_url }}"></script>#}
-{#{% endjavascripts %}#}
+{% javascripts
+  '@MGFrontBundle/Resources/public/js/app/ProductModel.js'
+  '@MGFrontBundle/Resources/public/js/app/CatalogView.js' %}
+  <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 <script type="text/javascript">
-//  $(function () {
-  //    var products = new MGApp.ProductCollection();
+    var products = new MGApp.ProductCollection();
 
-  {#{% for item in items %}#}
-  {#products.add({#}
+    products.url = '{{ path('mg_product_add') }}';
+    products.length = parseInt($('.cart > .number > a').text());
 
-  {#});#}
-  {#{% endfor %}#}
 
-  //    new MGApp.CatalogView({
-  //      el: $('#main2'),
-  //      collection: products
-  //    });
-  //  });
+    new MGApp.CatalogView({
+      el: $('#main2'),
+      collection: products
+    });
 </script>
