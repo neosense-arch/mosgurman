@@ -86,11 +86,16 @@ MGApp.CartView = Backbone.View.extend({
   },
 
   removeBasketBlock: function (id) {
-    this.$('div[data-order-id="' + id + '"]').fadeOut('normal', function () {
+    var $block = this.$('div[data-order-id="' + id + '"]');
+
+    this._costs[$block.index()] = 0;
+
+    $block.fadeOut('normal', function () {
       this.remove();
     });
 
     this.redrawProductCount();
+    this.calculateSummaryPrice();
   },
 
   redrawProductCount: function () {
