@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "96cc63757c754e9e036ebcf13b9188ea",
+    "hash": "95a56f5f129c75ce4c5cfcd1c8888940",
     "packages": [
         {
             "name": "avalanche123/imagine-bundle",
@@ -1029,17 +1029,17 @@
         },
         {
             "name": "genemu/form-bundle",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "target-dir": "Genemu/Bundle/FormBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/genemu/GenemuFormBundle.git",
-                "reference": "78fcd307a69b499241d7f0fa5c1b378e77358f16"
+                "reference": "9fecbe7a12fba1761228909e843301c4d1a11e7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/78fcd307a69b499241d7f0fa5c1b378e77358f16",
-                "reference": "78fcd307a69b499241d7f0fa5c1b378e77358f16",
+                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/9fecbe7a12fba1761228909e843301c4d1a11e7c",
+                "reference": "9fecbe7a12fba1761228909e843301c4d1a11e7c",
                 "shasum": ""
             },
             "require": {
@@ -1051,7 +1051,6 @@
                 "doctrine/doctrine-bundle": "1.*",
                 "doctrine/mongodb-odm-bundle": "*",
                 "doctrine/orm": "2.*",
-                "phpunit/phpunit": "3.7.*",
                 "propel/propel-bundle": "*",
                 "symfony/doctrine-bridge": "~2.3",
                 "symfony/finder": "2.*"
@@ -1096,7 +1095,7 @@
                 "extra form",
                 "form"
             ],
-            "time": "2013-07-31 22:28:58"
+            "time": "2014-03-23 12:12:05"
         },
         {
             "name": "helios-ag/fm-elfinder-bundle",
@@ -2076,16 +2075,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57"
+                "reference": "392ef35fd470638e08d0160d6b1cbab63cb23174"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6225b22de9dcf36546be3a0b2fa8e3d986153f57",
-                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/392ef35fd470638e08d0160d6b1cbab63cb23174",
+                "reference": "392ef35fd470638e08d0160d6b1cbab63cb23174",
                 "shasum": ""
             },
             "require": {
@@ -2093,11 +2092,11 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "aws/aws-sdk-php": "~2.4.8",
-                "doctrine/couchdb": "dev-master",
-                "mlehner/gelf-php": "1.0.*",
+                "aws/aws-sdk-php": "~2.4, >2.4.8",
+                "doctrine/couchdb": "~1.0@dev",
+                "graylog2/gelf-php": "~1.0",
                 "phpunit/phpunit": "~3.7.0",
-                "raven/raven": "0.5.*",
+                "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*"
             },
             "suggest": {
@@ -2105,19 +2104,20 @@
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
-                "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "raven/raven": "Allow sending log messages to a Sentry server",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
                 "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev"
+                    "dev-master": "1.8.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Monolog": "src/"
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2139,7 +2139,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-11-14 19:48:31"
+            "time": "2014-03-23 19:50:26"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -2257,12 +2257,12 @@
         },
         {
             "name": "neosense/admin-bundle",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "target-dir": "NS/AdminBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsadminbundle.git",
-                "reference": "58f9d4cc1ca1e6d57844ddbbc8b04125fd2c7f5f"
+                "reference": "5e1dc3d202b4b6fdb2ca34d3886f18c81edaf083"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2286,7 +2286,7 @@
             "keywords": [
                 "admin"
             ],
-            "time": "2014-03-17 08:02:29"
+            "time": "2014-03-29 20:24:43"
         },
         {
             "name": "neosense/cache-bundle",
@@ -2319,12 +2319,12 @@
         },
         {
             "name": "neosense/catalog-bundle",
-            "version": "1.9.1",
+            "version": "1.10.0",
             "target-dir": "NS/CatalogBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscatalogbundle.git",
-                "reference": "ff36dfb34dc571c631d01a9c8ec7ff6dff74b96a"
+                "reference": "5df0d73402e0860f3218c7c8ffa9dd36042bd27d"
             },
             "require": {
                 "neosense/cms-bundle": ">=1.5.0",
@@ -2349,16 +2349,16 @@
                 "catalog",
                 "eshop"
             ],
-            "time": "2014-03-17 08:45:46"
+            "time": "2014-03-22 20:51:18"
         },
         {
             "name": "neosense/cms-bundle",
-            "version": "1.11.2",
+            "version": "1.13.2",
             "target-dir": "NS/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscmsbundle.git",
-                "reference": "8fcded6475bb8b3a492a084a1fc75ffdef1d2f9a"
+                "reference": "c435d345775bf95713f85d1ec8a792254b9304b0"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2383,16 +2383,16 @@
                 "blocks",
                 "cms"
             ],
-            "time": "2014-03-10 15:45:02"
+            "time": "2014-03-28 13:57:03"
         },
         {
             "name": "neosense/core-bundle",
-            "version": "1.16.1",
+            "version": "1.20.0",
             "target-dir": "NS/CoreBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscorebundle.git",
-                "reference": "8fb1a0349e34d0a59adba557185cdb8cdc6a12ab"
+                "reference": "4d3a6ca7026ef73b88991e618aa65f95513777e6"
             },
             "require": {
                 "avalanche123/imagine-bundle": "2.1.*",
@@ -2413,14 +2413,14 @@
                 "knplabs/knp-paginator-bundle": "2.4.*",
                 "liuggio/excelbundle": "1.0.*",
                 "mopa/bootstrap-bundle": "2.2.*@alpha",
-                "neosense/admin-bundle": "1.7.*",
+                "neosense/admin-bundle": "1.8.*",
                 "neosense/cache-bundle": "1.2.*",
-                "neosense/catalog-bundle": "1.9.*",
-                "neosense/cms-bundle": "1.11.*",
+                "neosense/catalog-bundle": "1.10.*",
+                "neosense/cms-bundle": "1.13.*",
                 "neosense/deploy-bundle": "1.1.*",
                 "neosense/documents-bundle": "1.1.*",
-                "neosense/feedback-bundle": "1.1.*",
-                "neosense/gallery-bundle": "1.1.*",
+                "neosense/feedback-bundle": "1.2.*",
+                "neosense/gallery-bundle": "1.2.*",
                 "neosense/news-bundle": "1.1.*",
                 "neosense/pages-bundle": "1.1.*",
                 "neosense/properties-bundle": "1.0.*",
@@ -2433,7 +2433,6 @@
                 "sensio/distribution-bundle": "~2.3",
                 "sensio/framework-extra-bundle": "~3.0",
                 "sensio/generator-bundle": "~2.3",
-                "stfalcon/tinymce-bundle": "0.2.*",
                 "stof/doctrine-extensions-bundle": "1.1.*",
                 "symfony/assetic-bundle": "~2.3",
                 "symfony/dom-crawler": "2.4.*",
@@ -2459,7 +2458,7 @@
                 }
             ],
             "description": "NS Core Bundle",
-            "time": "2014-03-17 08:46:43"
+            "time": "2014-03-29 20:27:56"
         },
         {
             "name": "neosense/deploy-bundle",
@@ -2532,12 +2531,12 @@
         },
         {
             "name": "neosense/feedback-bundle",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "target-dir": "NS/FeedbackBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsfeedbackbundle.git",
-                "reference": "0ba10e0ea9545c6d7fd04161c0fb020ffac74a5e"
+                "reference": "5b56d97f3f36b087a333f7bf66711a2e9ca6fd8b"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2562,16 +2561,16 @@
                 "feedback",
                 "forms"
             ],
-            "time": "2014-02-14 10:31:32"
+            "time": "2014-03-22 20:48:25"
         },
         {
             "name": "neosense/gallery-bundle",
-            "version": "1.1.1",
+            "version": "1.2.1",
             "target-dir": "NS/GalleryBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsgallerybundle.git",
-                "reference": "b64748b6dad36e53c9056c2756e8fa7169cf1d1b"
+                "reference": "fd916fa7768e26e69f1eb1749b3cea0efb52a469"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2595,7 +2594,7 @@
             "keywords": [
                 "gallery"
             ],
-            "time": "2014-03-10 12:25:30"
+            "time": "2014-03-28 13:57:56"
         },
         {
             "name": "neosense/news-bundle",
@@ -2633,12 +2632,12 @@
         },
         {
             "name": "neosense/pages-bundle",
-            "version": "v1.1.0",
+            "version": "1.1.1",
             "target-dir": "NS/PagesBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nspagesbundle.git",
-                "reference": "61074641aa731cdd00cd3aab17ee88e1ad337cec"
+                "reference": "7e6d3f8187f06318bb978a6e9a355d5637ad72e4"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2662,7 +2661,7 @@
                 "cms",
                 "pages"
             ],
-            "time": "2013-06-04 17:29:32"
+            "time": "2014-03-28 13:58:55"
         },
         {
             "name": "neosense/properties-bundle",
@@ -2827,12 +2826,12 @@
         },
         {
             "name": "neosense/user-bundle",
-            "version": "1.5.0",
+            "version": "1.5.2",
             "target-dir": "NS/UserBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsuserbundle.git",
-                "reference": "1a45071f5628e19bcc20ce292258bcbe6b29c4d3"
+                "reference": "264ef7edceb510b3092cea625b1015e7d2b2fad0"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2856,7 +2855,7 @@
                 "cms",
                 "user"
             ],
-            "time": "2014-03-10 13:30:18"
+            "time": "2014-03-29 16:23:05"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -3157,64 +3156,6 @@
             "time": "2013-08-21 18:09:35"
         },
         {
-            "name": "stfalcon/tinymce-bundle",
-            "version": "v0.2.1",
-            "target-dir": "Stfalcon/Bundle/TinymceBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stfalcon/TinymceBundle.git",
-                "reference": "0cb00c774300cf7cd711fcbb3807f440c7fe7b74"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/0cb00c774300cf7cd711fcbb3807f440c7fe7b74",
-                "reference": "0cb00c774300cf7cd711fcbb3807f440c7fe7b74",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/symfony": ">=2.1"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Stfalcon\\Bundle\\TinymceBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stepan Tanasiychuk",
-                    "email": "ceo@stfalcon.com",
-                    "homepage": "http://blog.stfalcon.com"
-                },
-                {
-                    "name": "Igor Negrutsa",
-                    "email": "progi2007@gmail.com",
-                    "homepage": "http://igor-negrutsa.info"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/stfalcon/TinymceBundle/contributors"
-                }
-            ],
-            "description": "This Bundle integrates TinyMCE WYSIWYG editor into a Symfony2 project.",
-            "keywords": [
-                "editor",
-                "tinymce",
-                "wysiwyg"
-            ],
-            "time": "2013-07-22 06:59:21"
-        },
-        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "v1.1.0",
             "target-dir": "Stof/DoctrineExtensionsBundle",
@@ -3392,17 +3333,17 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "cac3fdfb111adbe590155f491594636d45129783"
+                "reference": "fdba214b1e087c149843bde976263c53ac10c975"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/cac3fdfb111adbe590155f491594636d45129783",
-                "reference": "cac3fdfb111adbe590155f491594636d45129783",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/fdba214b1e087c149843bde976263c53ac10c975",
+                "reference": "fdba214b1e087c149843bde976263c53ac10c975",
                 "shasum": ""
             },
             "require": {
@@ -3435,7 +3376,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-06-03 18:32:07"
+            "time": "2013-10-04 09:12:07"
         },
         {
             "name": "symfony/monolog-bundle",
