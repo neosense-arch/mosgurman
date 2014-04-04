@@ -1,0 +1,56 @@
+<div id="main">
+  <div class="checkout">
+    <form action="">
+      <fieldset>
+        <div class="checkout-left">
+          <span>Ваше имя:</span>
+          <input type="text" value="">
+          <span>Фамилия:</span>
+          <input type="text" value="">
+          <span>Адрес:</span>
+          <input type="text" value="">
+          <span>Телефон:</span>
+          <input type="text" value="">
+          <span>Дополнительная информация:</span>
+          <textarea name="" id="" cols="" rows=""></textarea>
+        </div>
+        <div class="checkout-right">
+          <b>Выберите метод оплаты:</b>
+          <select id="seldef1" class="area2" title="Карта VISA">
+            <option>Карта VISA</option>
+            <option>Карта VISA</option>
+          </select>
+          <b>Номер карты:</b>
+          <input type="text" value="">
+
+          <div class="checkout-block">
+            <div class="checkout-block-left">
+              <b>Действительная до:</b>
+              <select id="seldef1" class="area3" title="">
+                <option></option>
+                <option></option>
+              </select>
+              <select id="seldef1" class="area3" title="">
+                <option></option>
+                <option></option>
+              </select>
+            </div>
+            <div class="checkout-block-right">
+              <b>CVV:</b>
+              <input type="text" value="">
+            </div>
+          </div>
+          <p>Итого: <strong>2400 руб</strong></p>
+          <input type="submit" value="Оплатить">
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // replace custom forms
+  jcf.lib.domReady(function(){
+    jcf.customForms.replaceAll();
+  });
+</script>

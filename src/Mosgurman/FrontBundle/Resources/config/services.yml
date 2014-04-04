@@ -1,10 +1,12 @@
 parameters:
     mg_front.entity.cart_order.class: Mosgurman\FrontBundle\Entity\CartOrder
     mg_front.entity.customer.class: Mosgurman\FrontBundle\Entity\Customer
+    mg_front.entity.checkout.class: Mosgurman\FrontBundle\Entity\Checkout
 
     mg_front.catalog.item_settings_type.class: Mosgurman\FrontBundle\Catalog\ItemSettingsType
     mg_front.manager.cart_order.class: Mosgurman\FrontBundle\Service\CartOrderManager
     mg_front.manager.customer.class: Mosgurman\FrontBundle\Service\CustomerManager
+    mg_front.manager.checkout.class: Mosgurman\FrontBundle\Service\CheckoutManager
 
 services:
     mg_front.catalog.item_settings_type:
@@ -23,6 +25,12 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - %mg_front.entity.customer.class%
+
+    mg_front.manager.checkout:
+        class: %mg_front.manager.checkout.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %mg_front.entity.checkout.class%
 
     mg_front.customer_listener:
         class: Mosgurman\FrontBundle\EventListener\UserListener

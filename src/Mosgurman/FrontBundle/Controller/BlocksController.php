@@ -9,6 +9,9 @@
 
 namespace Mosgurman\FrontBundle\Controller;
 
+use Mosgurman\FrontBundle\Entity\Checkout;
+use Mosgurman\FrontBundle\Entity\Customer;
+use Mosgurman\FrontBundle\Form\CheckoutType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -49,5 +52,59 @@ class BlocksController extends Controller
         return $this->render('MGFrontBundle:Blocks:cartBlock.html.twig', array(
             'cart_orders' => $cartOrders,
         ));
+    }
+
+    public function checkoutBlockAction(Request $request)
+    {
+        if (!$request->getSession()->has('customer_id')) {
+            return $this->redirect($this->generateUrl('ns_cms_main'));
+        }
+
+        $customer = $this->get('mg_front.manager.customer')
+            ->findCustomerByUniqueId($request->getSession()->get('customer_id'));
+
+        if (!$customer instanceof Customer) {
+            return $this->redirect($this->generateUrl('ns_cms_main'));
+        }
+
+        $checkout = $this->getCheckoutManager()->createCheckout($customer);
+
+        $form = $this->createCheckoutForm($checkout);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->getCheckoutManager()->saveCheckout($checkout);
+            $this->get('session')->getFlashBag()->add('success', true);
+
+            return $this->redirect($this->generateUrl('ns_cms_page_name', array('name' => 'checkout')));
+        }
+
+        // Remove customer
+        if ($this->get('session')->getFlashBag()->has('success')) {
+            $request->getSession()->remove('customer_id');
+        }
+
+        return $this->render('MGFrontBundle:Blocks:checkoutBlock.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    private function createCheckoutForm(Checkout $checkout)
+    {
+        $form = $this->createForm(new CheckoutType(), $checkout, array(
+            'method' => 'POST',
+        ));
+
+        $form->add('save', 'submit', array('label' => 'Заказать'));
+
+        return $form;
+    }
+
+    /**
+     * @return \Mosgurman\FrontBundle\Service\CheckoutManager
+     */
+    private function getCheckoutManager()
+    {
+        return $this->get('mg_front.manager.checkout');
     }
 }

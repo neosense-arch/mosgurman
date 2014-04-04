@@ -57,4 +57,4 @@ avalanche_imagine:
 
 # NS Admin
 ns_admin:
-    bundles: [ NSCmsBundle, NSUserBundle, NSCatalogBundle, BFFrontBundle, NSAdminBundle, MGFrontBundle ]
+    bundles: [ NSCmsBundle, NSUserBundle, NSCatalogBundle, NSAdminBundle, MGFrontBundle ]

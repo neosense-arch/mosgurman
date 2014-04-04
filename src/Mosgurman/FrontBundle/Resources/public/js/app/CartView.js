@@ -27,6 +27,7 @@ MGApp.CartView = Backbone.View.extend({
     this.$el.find('.basket-block').each(function (idx, el) {
       self.calculateOrderPrice($(el));
     });
+    this.redrawButton();
   },
 
   onDeleteClick: function (e) {
@@ -55,7 +56,6 @@ MGApp.CartView = Backbone.View.extend({
             break;
         }
       },
-
       error: function (model, response, options) {
         var code = options.xhr.status;
 
@@ -77,12 +77,14 @@ MGApp.CartView = Backbone.View.extend({
             break;
         }
       }
-
     });
+
+    this.redrawButton();
   },
 
   addProduct: function () {
     this.redrawProductCount();
+    this.redrawButton();
   },
 
   removeBasketBlock: function (id) {
@@ -129,6 +131,16 @@ MGApp.CartView = Backbone.View.extend({
 
   onChangeSelect: function (e) {
     this.calculateOrderPrice($(e.target).parents('.basket-block'));
+  },
+
+  redrawButton: function () {
+    var $button = this.$('.in-total > a');
+
+    if (this.collection.length == 0) {
+      $button.hide();
+    } else {
+      $button.show();
+    }
   }
 
 });

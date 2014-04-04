@@ -5,3 +5,6 @@ blocks:
     -
         name: MGFrontBundle:Blocks:cartBlock
         title: Корзина посетителя
+    -
+        name: MGFrontBundle:Blocks:checkoutBlock
+        title: Блок оформления заказа

@@ -1,0 +1,55 @@
+<div id="main">
+  <div class="checkout">
+    {% if app.session.flashbag.has('success') %}
+      <div class="block-current-page">
+        <h1>Спасибо за заказ!</h1>
+
+        <h3>Ваш заказ отправлен! Дождитесь звонка от менеджера!</h3>
+      </div>
+    {% else %}
+      {{ form_start(form) }}
+      <fieldset>
+        <div class="checkout-left">
+          {{ form_errors(form) }}
+
+          {{ form_errors(form.name) }}
+          <span>{{ form_label(form.name) }}</span>
+          {{ form_widget(form.name) }}
+
+          {{ form_errors(form.surname) }}
+          <span>{{ form_label(form.surname) }}</span>
+          {{ form_widget(form.surname) }}
+
+          {{ form_errors(form.address) }}
+          <span>{{ form_label(form.address) }}</span>
+          {{ form_widget(form.address) }}
+
+          {{ form_errors(form.phone) }}
+          <span>{{ form_label(form.phone) }}</span>
+          {{ form_widget(form.phone) }}
+
+          {{ form_errors(form.comment) }}
+          <span>{{ form_label(form.comment) }}</span>
+          {{ form_widget(form.comment) }}
+        </div>
+        <div class="checkout-right">
+          <b>Выберите метод оплаты</b>
+          <select id="seldef1" class="area2 payment-method" disabled="disabled">
+            <option>Наличными курьеру</option>
+          </select>
+
+          <p>Итого: <strong>2400 руб</strong></p>
+          {{ form_widget(form.save) }}
+        </div>
+      </fieldset>
+      {{ form_end(form) }}
+    {% endif %}
+  </div>
+</div>
+
+<script type="text/javascript">
+  // replace custom forms
+  jcf.lib.domReady(function () {
+    jcf.customForms.replaceAll();
+  });
+</script>
