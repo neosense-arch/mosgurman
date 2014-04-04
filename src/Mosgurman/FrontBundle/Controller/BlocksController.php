@@ -54,6 +54,10 @@ class BlocksController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function checkoutBlockAction(Request $request)
     {
         if (!$request->getSession()->has('customer_id')) {
@@ -74,7 +78,11 @@ class BlocksController extends Controller
 
         if ($form->isValid()) {
             $this->getCheckoutManager()->saveCheckout($checkout);
-            $this->get('session')->getFlashBag()->add('success', true);
+            $this->get('session')->getFlashBag()->add('success', '');
+
+            $this->get('mg_front.service.mail_report')->sendReports(
+                $this->renderView('MGFrontBundle:Emails:checkout.html.twig', array('checkout' => $checkout))
+            );
 
             return $this->redirect($this->generateUrl('ns_cms_page_name', array('name' => 'checkout')));
         }
@@ -89,6 +97,10 @@ class BlocksController extends Controller
         ));
     }
 
+    /**
+     * @param Checkout $checkout
+     * @return \Symfony\Component\Form\Form
+     */
     private function createCheckoutForm(Checkout $checkout)
     {
         $form = $this->createForm(new CheckoutType(), $checkout, array(

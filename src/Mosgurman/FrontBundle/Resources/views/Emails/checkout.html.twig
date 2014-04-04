@@ -1,0 +1,27 @@
+<h3>Заказ от контактного лица:</h3>
+<ul>
+  {% if checkout.name %}<li><strong>Имя</strong>: {{ checkout.name }}</li>{% endif %}
+  {% if checkout.surname %}<li><strong>Фамилия</strong>: {{ checkout.surname }}</li>{% endif %}
+  {% if checkout.address %}<li><strong>Адрес</strong>: {{ checkout.address }}</li>{% endif %}
+  {% if checkout.phone %}<li><strong>Телефон</strong>: {{ checkout.phone }}</li>{% endif %}
+  {% if checkout.comment %}
+  <li>
+    <strong>Комментарий</strong>:
+    <p>{{ checkout.comment }}</p>
+  </li>
+  {% endif %}
+</ul>
+
+<h3>Заказанные товары:</h3>
+
+<ul>
+  {% for cartOrder in checkout.customer.cartOrders %}
+  <li>
+    <strong>{{ cartOrder.item.title }}</strong>
+    <ul>
+      {% if cartOrder.weight %}<li><strong>Вес</strong>: {{ cartOrder.weight }}</li>{% endif %}
+      {% if cartOrder.count %}<li><strong>Количество</strong>: {{ cartOrder.count }}</li>{% endif %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>

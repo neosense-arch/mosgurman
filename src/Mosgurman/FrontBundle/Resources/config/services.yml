@@ -8,6 +8,8 @@ parameters:
     mg_front.manager.customer.class: Mosgurman\FrontBundle\Service\CustomerManager
     mg_front.manager.checkout.class: Mosgurman\FrontBundle\Service\CheckoutManager
 
+    mg_front.service.mail_report.class: Mosgurman\FrontBundle\Service\MailReportService
+
 services:
     mg_front.catalog.item_settings_type:
         class: %mg_front.catalog.item_settings_type.class%
@@ -31,6 +33,12 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - %mg_front.entity.checkout.class%
+
+    mg_front.service.mail_report:
+        class: %mg_front.service.mail_report.class%
+        arguments:
+            - %report_mails_path%
+            - @mailer
 
     mg_front.customer_listener:
         class: Mosgurman\FrontBundle\EventListener\UserListener

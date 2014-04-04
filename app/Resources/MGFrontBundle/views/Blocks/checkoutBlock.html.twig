@@ -1,6 +1,7 @@
 <div id="main">
   <div class="checkout">
     {% if app.session.flashbag.has('success') %}
+      {% set msg = app.session.flashbag.get('success') %}
       <div class="block-current-page">
         <h1>Спасибо за заказ!</h1>
 

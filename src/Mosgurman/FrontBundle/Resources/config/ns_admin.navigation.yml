@@ -1,0 +1,7 @@
+-
+    label:  "Заказы"
+    parent: "settings"
+    pages:
+        -
+            action: "checkout:mails"
+            label: "Адреса электропочты"

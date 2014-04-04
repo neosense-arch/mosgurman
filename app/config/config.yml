@@ -58,3 +58,6 @@ avalanche_imagine:
 # NS Admin
 ns_admin:
     bundles: [ NSCmsBundle, NSUserBundle, NSCatalogBundle, NSAdminBundle, MGFrontBundle ]
+
+parameters:
+    report_mails_path: %kernel.root_dir%/../src/Mosgurman/FrontBundle/Resources/admin/mails.txt
