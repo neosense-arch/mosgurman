@@ -39,7 +39,7 @@
             <option>Наличными курьеру</option>
           </select>
 
-          <p>Итого: <strong>2400 руб</strong></p>
+          <p>Итого: <strong>{{ cost|default(0) }} руб</strong></p>
           {{ form_widget(form.save) }}
         </div>
       </fieldset>

@@ -92,8 +92,23 @@ class BlocksController extends Controller
             $request->getSession()->remove('customer_id');
         }
 
+        // Calculate cost
+        $cartOrders = $this->get('mg_front.manager.cart_order')
+            ->findCartOrdersByCustomer($customer);
+
+        $cost = 0;
+
+        foreach ($cartOrders as $cartOrder) {
+            foreach ($cartOrder->getItem()->getSettings()->getPrices() as $price) {
+                if ($price['weight'] == $cartOrder->getWeight()) {
+                    $cost += $price['price'] * $cartOrder->getCount();
+                }
+            }
+        }
+
         return $this->render('MGFrontBundle:Blocks:checkoutBlock.html.twig', array(
             'form' => $form->createView(),
+            'cost' => $cost,
         ));
     }
 
