@@ -52,8 +52,65 @@ CREATE TABLE `fos_user` (
 
 LOCK TABLES `fos_user` WRITE;
 /*!40000 ALTER TABLE `fos_user` DISABLE KEYS */;
-INSERT INTO `fos_user` VALUES (1,'admin@admin.com','admin@admin.com','admin@admin.com','admin@admin.com',1,'dju24fp08oowo80gocc0k488ocs4w4c','odgAycgDmQMgOVnwmqbaLYoOfnSa/UCfrTi1DXvIdCBDBlK6NRwSdyKqwbPfwJJWnHgG70ilyv8BLB3mQ+y7CQ==','2014-03-26 20:39:47',0,0,NULL,NULL,NULL,'a:1:{i:0;s:10:\"ROLE_ADMIN\";}',0,NULL);
+INSERT INTO `fos_user` VALUES (1,'admin@admin.com','admin@admin.com','admin@admin.com','admin@admin.com',1,'dju24fp08oowo80gocc0k488ocs4w4c','odgAycgDmQMgOVnwmqbaLYoOfnSa/UCfrTi1DXvIdCBDBlK6NRwSdyKqwbPfwJJWnHgG70ilyv8BLB3mQ+y7CQ==','2014-04-05 14:38:21',0,0,NULL,NULL,NULL,'a:1:{i:0;s:10:\"ROLE_ADMIN\";}',0,NULL);
 /*!40000 ALTER TABLE `fos_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mg_checkout_mails`
+--
+
+DROP TABLE IF EXISTS `mg_checkout_mails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mg_checkout_mails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mg_checkout_mails`
+--
+
+LOCK TABLES `mg_checkout_mails` WRITE;
+/*!40000 ALTER TABLE `mg_checkout_mails` DISABLE KEYS */;
+INSERT INTO `mg_checkout_mails` VALUES (1,'stmol@bk.ru');
+/*!40000 ALTER TABLE `mg_checkout_mails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mg_checkouts`
+--
+
+DROP TABLE IF EXISTS `mg_checkouts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mg_checkouts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `surname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` longtext COLLATE utf8_unicode_ci,
+  `created_at` datetime NOT NULL,
+  `is_delivered` tinyint(1) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_90147AE89395C3F3` (`customer_id`),
+  CONSTRAINT `FK_90147AE89395C3F3` FOREIGN KEY (`customer_id`) REFERENCES `mg_customers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mg_checkouts`
+--
+
+LOCK TABLES `mg_checkouts` WRITE;
+/*!40000 ALTER TABLE `mg_checkouts` DISABLE KEYS */;
+INSERT INTO `mg_checkouts` VALUES (1,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 15:19:31',1,10),(2,'Yura','Developer','Moscow','123-56-78','lkfjldkjfsdfsdf','2014-04-04 18:21:22',1,14),(3,'Yura','Developer','Moscow','123-56-78','klfjsdlfsdfsdfs','2014-04-04 18:32:14',1,16),(4,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 18:37:31',1,18),(5,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 18:38:02',1,18),(6,NULL,NULL,'Moscow','123-56-78','cxf','2014-04-04 18:40:56',1,19),(7,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 18:41:38',1,19),(8,NULL,'daas','Moscow','123-56-78',NULL,'2014-04-04 18:42:23',1,20),(9,'Yura',NULL,'Moscow','123-56-78',NULL,'2014-04-04 19:44:23',1,20),(10,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 19:50:07',1,23),(11,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 20:01:46',1,26),(12,NULL,NULL,'Moscow','123-56-78',NULL,'2014-04-04 20:03:38',1,27),(13,'Yuri','Stmol','Moscow','123-56-78','123','2014-04-04 20:04:37',1,28),(14,'Yuri','Stmol','Moscow 2','123-56-78','Siiir','2014-04-04 20:05:19',1,29),(15,NULL,NULL,'Moscow 2','123-56-78',NULL,'2014-04-04 20:07:49',1,30),(16,NULL,NULL,'Moscow 2','111-11-11',NULL,'2014-04-04 20:08:27',0,31),(17,'Yura','Stmol','Moscow','111-11-11',NULL,'2014-04-04 20:19:24',0,32),(18,'Yurec','Stmol','Moscow','123-56-78',NULL,'2014-04-05 16:25:00',0,33);
+/*!40000 ALTER TABLE `mg_checkouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -69,7 +126,7 @@ CREATE TABLE `mg_customers` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_7882AF78E3C68343` (`unique_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +135,7 @@ CREATE TABLE `mg_customers` (
 
 LOCK TABLES `mg_customers` WRITE;
 /*!40000 ALTER TABLE `mg_customers` DISABLE KEYS */;
-INSERT INTO `mg_customers` VALUES (2,'144cbaed2cbf0f20bb22be3ec2e6718b216eb072','2014-03-23 14:08:55'),(3,'61d7550af6315cfda3c0075f3de78c1c952366f9','2014-03-23 14:09:28'),(4,'d8b94bb3ff0a287384b84cd2c25d5921dec4eb4f','2014-03-23 15:07:58'),(5,'f004223d3e041ebe2fb6f8a42458398d7f0d731e','2014-03-26 22:06:49'),(6,'f1aeed339c9065200b45ef5d2786e07c3a01d70c','2014-03-27 00:26:55');
+INSERT INTO `mg_customers` VALUES (2,'144cbaed2cbf0f20bb22be3ec2e6718b216eb072','2014-03-23 14:08:55'),(3,'61d7550af6315cfda3c0075f3de78c1c952366f9','2014-03-23 14:09:28'),(4,'d8b94bb3ff0a287384b84cd2c25d5921dec4eb4f','2014-03-23 15:07:58'),(5,'f004223d3e041ebe2fb6f8a42458398d7f0d731e','2014-03-26 22:06:49'),(6,'f1aeed339c9065200b45ef5d2786e07c3a01d70c','2014-03-27 00:26:55'),(7,'972cc6e2b76a042ffdf3b5e4dc2c93184718ba5b','2014-04-01 18:29:11'),(8,'68279379e89d6fc4ab462fb7299bce1a1cdf2653','2014-04-02 21:50:15'),(9,'0cf26f617cb752cf15a7526e28b503e7e73ff414','2014-04-03 00:54:22'),(10,'9e833315a49bb03d3ea951adae50146ee715d2df','2014-04-03 00:55:17'),(11,'309075f8adf3b5501a5e7249ebac2ecac9bbee97','2014-04-04 15:20:41'),(12,'b1f7f7a4a39b838165f20c7245ae1ed2bbc750b9','2014-04-04 18:15:12'),(13,'3b97c5640b2b797fb7a7606a2a1a56c1aaa5ee3a','2014-04-04 18:17:45'),(14,'d8c39cf8cbf4f6c9bae6050d1cd2c63a2d9b8cea','2014-04-04 18:20:52'),(15,'b6ee7f8c9f2f2910f874b2f236f0d5a56da1f816','2014-04-04 18:28:29'),(16,'6fffcb31f8870ba2a20e032a3e58d8a499cbf919','2014-04-04 18:31:46'),(17,'2cf8789c09d02ed384b9d7c4b846f0d78c2f2a8f','2014-04-04 18:35:48'),(18,'27a11e9d0d7790deaae67e3f3474e658da7ee0a6','2014-04-04 18:37:08'),(19,'b7a09941be8eccc53a75a144704b34e8023f348e','2014-04-04 18:40:35'),(20,'117347e6ac198324ec9326366b8b4c6dcbed379e','2014-04-04 18:42:04'),(21,'d71f02f5949fde97773a31950ec8cfa9e19a89bb','2014-04-04 19:44:52'),(22,'5e10309d7456b0efd6689e3c34dfd082e27d46d6','2014-04-04 19:46:48'),(23,'625d8a4a898f2348bd7f012880c561a5a5688bc9','2014-04-04 19:49:34'),(24,'c9c61ce87e19a2e0629d69a593220ae0695d43fb','2014-04-04 19:52:37'),(25,'b21b375cc897df5535ed137bbd7e5ce05bef0073','2014-04-04 19:59:50'),(26,'0300b10c109f415814db0e512b97247be614ce34','2014-04-04 20:01:31'),(27,'2949c004511241df886f10bd41ca152451dfe990','2014-04-04 20:03:20'),(28,'0551733fc16a86b7727f688cf0adb593267e055a','2014-04-04 20:03:58'),(29,'281d5c7f84a99550acd212644cfd669548674426','2014-04-04 20:04:52'),(30,'4d41453a1d19055a6dcd4f2f3560517daedd0d4d','2014-04-04 20:07:05'),(31,'3fb39bb35302837312228f84d5c2f9922afbd9e5','2014-04-04 20:08:09'),(32,'d828dbdea31da4f7b7e73e4639beb91be08d76a9','2014-04-04 20:18:52'),(33,'186048a4616da6061e8a3b6020e6416fe4f8d505','2014-04-04 20:21:13'),(34,'bb999a8dec764b743fcd5520e3d9fb830c42a22c','2014-04-05 20:59:57');
 /*!40000 ALTER TABLE `mg_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,16 +149,16 @@ DROP TABLE IF EXISTS `mg_orders`;
 CREATE TABLE `mg_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) DEFAULT NULL,
-  `count` smallint(6) NOT NULL,
+  `count` smallint(6) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `weight` smallint(6) NOT NULL,
+  `weight` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_107B1EEC126F525E` (`item_id`),
   KEY `IDX_107B1EEC9395C3F3` (`customer_id`),
   CONSTRAINT `FK_107B1EEC126F525E` FOREIGN KEY (`item_id`) REFERENCES `ns_catalog_items` (`id`),
   CONSTRAINT `FK_107B1EEC9395C3F3` FOREIGN KEY (`customer_id`) REFERENCES `mg_customers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +167,7 @@ CREATE TABLE `mg_orders` (
 
 LOCK TABLES `mg_orders` WRITE;
 /*!40000 ALTER TABLE `mg_orders` DISABLE KEYS */;
-INSERT INTO `mg_orders` VALUES (19,1,1,'2014-03-23 14:08:55',2,0),(20,1,1,'2014-03-23 14:09:28',3,0),(21,1,1,'2014-03-23 14:09:30',3,0),(22,1,1,'2014-03-23 14:18:11',2,0),(23,2,1,'2014-03-23 14:46:01',2,0),(31,1,1,'2014-03-26 22:06:49',5,0),(32,2,1,'2014-03-26 22:06:50',5,0),(33,3,1,'2014-03-26 22:06:51',5,0),(34,4,1,'2014-03-26 22:06:52',5,0),(97,1,1,'2014-03-27 00:26:55',6,800),(98,1,2,'2014-03-27 00:26:56',6,1000);
+INSERT INTO `mg_orders` VALUES (19,1,1,'2014-03-23 14:08:55',2,0),(20,1,1,'2014-03-23 14:09:28',3,0),(21,1,1,'2014-03-23 14:09:30',3,0),(22,1,1,'2014-03-23 14:18:11',2,0),(23,2,1,'2014-03-23 14:46:01',2,0),(31,1,1,'2014-03-26 22:06:49',5,0),(32,2,1,'2014-03-26 22:06:50',5,0),(33,3,1,'2014-03-26 22:06:51',5,0),(34,4,1,'2014-03-26 22:06:52',5,0),(97,1,1,'2014-03-27 00:26:55',6,800),(98,1,2,'2014-03-27 00:26:56',6,1000),(110,1,3,'2014-04-01 18:35:08',7,800),(111,2,3,'2014-04-01 18:35:11',7,800),(112,1,1,'2014-04-02 21:50:15',8,800),(113,1,1,'2014-04-03 00:54:23',9,800),(114,1,1,'2014-04-03 00:55:17',10,800),(115,5,1,'2014-04-04 15:20:41',11,800),(116,5,1,'2014-04-04 15:20:43',11,1000),(117,5,1,'2014-04-04 15:20:44',11,1200),(118,1,1,'2014-04-04 18:15:12',12,800),(119,1,1,'2014-04-04 18:17:45',13,800),(120,1,1,'2014-04-04 18:20:52',14,800),(121,1,1,'2014-04-04 18:28:30',15,800),(122,2,1,'2014-04-04 18:28:31',15,800),(123,3,1,'2014-04-04 18:28:32',15,800),(124,1,1,'2014-04-04 18:31:47',16,800),(125,2,1,'2014-04-04 18:31:48',16,800),(126,3,1,'2014-04-04 18:31:49',16,800),(127,4,2,'2014-04-04 18:35:48',17,800),(128,1,1,'2014-04-04 18:37:09',18,800),(129,5,1,'2014-04-04 18:40:35',19,800),(130,3,1,'2014-04-04 18:42:05',20,800),(131,1,2,'2014-04-04 19:44:52',21,800),(132,1,1,'2014-04-04 19:46:49',22,800),(133,1,1,'2014-04-04 19:49:34',23,1000),(134,3,1,'2014-04-04 19:52:38',24,1000),(135,1,1,'2014-04-04 19:59:50',25,800),(136,1,1,'2014-04-04 20:01:31',26,800),(137,1,1,'2014-04-04 20:03:20',27,800),(138,1,1,'2014-04-04 20:03:58',28,800),(139,2,1,'2014-04-04 20:04:53',29,800),(140,1,1,'2014-04-04 20:07:05',30,800),(141,2,1,'2014-04-04 20:08:09',31,800),(142,1,1,'2014-04-04 20:18:52',32,800),(143,1,1,'2014-04-04 20:18:56',32,1000),(144,1,1,'2014-04-04 20:18:57',32,1200),(145,1,1,'2014-04-04 20:21:13',33,800),(147,2,1,'2014-04-05 21:41:52',34,1200),(148,3,5,'2014-04-05 21:46:06',34,800);
 /*!40000 ALTER TABLE `mg_orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +254,7 @@ CREATE TABLE `ns_catalog_items` (
   UNIQUE KEY `UNIQ_C4BF31B1989D9B62` (`slug`),
   KEY `IDX_C4BF31B112469DE2` (`category_id`),
   CONSTRAINT `FK_C4BF31B112469DE2` FOREIGN KEY (`category_id`) REFERENCES `ns_catalog_categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +334,7 @@ DROP TABLE IF EXISTS `ns_catalog_types`;
 CREATE TABLE `ns_catalog_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -313,7 +370,7 @@ CREATE TABLE `ns_cms_blocks` (
   PRIMARY KEY (`id`),
   KEY `IDX_5C6208FCC4663E4` (`page_id`),
   CONSTRAINT `FK_5C6208FCC4663E4` FOREIGN KEY (`page_id`) REFERENCES `ns_cms_pages` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +379,7 @@ CREATE TABLE `ns_cms_blocks` (
 
 LOCK TABLES `ns_cms_blocks` WRITE;
 /*!40000 ALTER TABLE `ns_cms_blocks` DISABLE KEYS */;
-INSERT INTO `ns_cms_blocks` VALUES (1,NULL,'Блок меню','NSCmsBundle:Blocks:menuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','header',0,0,0),(2,NULL,'Блок меню',NULL,NULL,'NSCmsBundle:Blocks:menuBlock','footer',1,0,0),(3,NULL,'Текстовый блок',NULL,NULL,'NSCmsBundle:Blocks:contentBlock','footer',0,0,0),(5,NULL,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:451:\"<span><strong>© 2014 МосГурман</strong> — осетинские пироги с душой!</span>\r\n						<p>Все права на материалы, находящиеся на сайте, охраняются в соответствии с законодательством РФ. <br>\r\n						При любом использовании материалов сайта, письменное согласие обязательно.</p>\";}','NSCmsBundle:Blocks:contentBlock','copyright',0,0,0),(7,NULL,'Блок меню','NSCmsBundle:Blocks:footerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','footer_menu',0,0,0),(8,NULL,'Меню категорий',NULL,'O:64:\"NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\":5:{s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0sortOrder\";s:81:\"osietinskiie-piroghi,sladkiie-piroghi,torty-i-diesierty,kulinariia,salaty,napitki\";s:74:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0template\";s:52:\"NSCatalogBundle:Blocks:categoriesMenuBlock.html.twig\";s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0isSubmenu\";b:0;s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0routeName\";s:19:\"ns_catalog_category\";s:85:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0redirectToFirstItem\";b:0;}','NSCatalogBundle:Blocks:categoriesMenuBlock','catalog_menu',0,0,0),(9,2,'Слайдер с изображениями',NULL,NULL,'MGFrontBundle:Blocks:sliderBlock','slider',0,0,0),(11,10,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(12,3,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(13,4,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(14,4,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:1182:\"<p>Наше предприятие занимается выпечкой осетинских пирогов с 2007г.</p>\r\n\r\n<p>Пироги выпекаются по оригинальному осетинскому рецепту с использованием ингредиентов высшего качества и при соблюдении всех санитарно-гигиенических норм и технических условий.</p>\r\n\r\n<h3><u>Минимальный заказ и район доставки уточняйте у оператора.</u></h3>\r\n\r\n<h3>Бесплатная доставка по Москве.</h3>\r\n\r\n<p><img alt=\"осетинские пироги телефон\" src=\"http://www.mosgurman.ru/images/stories/dostavka.jpg\" style=\"border:0px; float:left; height:93px; width:102px\" /></p>\r\n\r\n<p><strong>Прием заказов:</strong>&nbsp;с 09.00 до 21.00 без выходных.<br />\r\n<strong>Время доставки:</strong>&nbsp;1- 1,5 часа.<br />\r\n<strong>Оплата:</strong>&nbsp;наличными курьеру.<br />\r\n<strong>Телефоны:</strong>&nbsp;(495) 723-60-57 (495) 723-60-87</p>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(15,5,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:3015:\"<div>Компания ООО &laquo;Тарон&raquo;&nbsp;- мы занимаемся приготовлением, продажей и доставкой осетинских приогов</div>\r\n\r\n<div class=\"adr\">Адрес производства: 127055&nbsp;г. Москва,&nbsp;ул. Сущевская, д. 21, 2 подъезд, 1 этаж, пекарня</div>\r\n\r\n<div>Адрес офиса: 115280, г. Москва, ул. Автозаводская, д. 17, корп. 3, офис 11</div>\r\n\r\n<div>Мы работаем&nbsp;с 9.00 до 21.00\r\n<p><img alt=\"осетинские пироги телефон\" src=\"http://www.mosgurman.ru/images/stories/telef.jpg\" style=\"border:0px; float:left; height:55px; width:32px\" /></p>\r\n<script src=\"http://api-maps.yandex.ru/1.1/?key=AO8Pb04BAAAAYkHucgIAQ5fuVe1_bNLp6mxReq0QfGYCfJ4AAAAAAAAAAAB1q351VGWU0y6a-X8nQcbMjAbIOA==&modules=pmap&wizard=constructor\" type=\"text/javascript\"></script> <script type=\"text/javascript\">\r\n    YMaps.jQuery(window).load(function () {\r\n        var map = new YMaps.Map(YMaps.jQuery(\"#YMapsID-1024\")[0]);\r\n        map.setCenter(new YMaps.GeoPoint(37.599658,55.782696), 16, YMaps.MapType.MAP);\r\n        map.addControl(new YMaps.Zoom());\r\n        map.addControl(new YMaps.ToolBar());\r\n        YMaps.MapType.PMAP.getName = function () { return \"Народная\"; };\r\n        map.addControl(new YMaps.TypeControl([\r\n            YMaps.MapType.MAP,\r\n            YMaps.MapType.SATELLITE,\r\n            YMaps.MapType.HYBRID,\r\n            YMaps.MapType.PMAP\r\n        ], [0, 1, 2, 3]));\r\n\r\n        YMaps.Styles.add(\"constructor#pmlbmPlacemark\", {\r\n            iconStyle : {\r\n                href : \"http://api-maps.yandex.ru/i/0.3/placemarks/pmlbm.png\",\r\n                size : new YMaps.Point(28,29),\r\n                offset: new YMaps.Point(-8,-27)\r\n            }\r\n        });\r\n\r\n       map.addOverlay(createObject(\"Placemark\", new YMaps.GeoPoint(37.600495,55.782309), \"constructor#pmlbmPlacemark\", \"Москва, ул. Сущевская, д. 21,  2 подъезд, 1 этаж\"));\r\n        \r\n        function createObject (type, point, style, description) {\r\n            var allowObjects = [\"Placemark\", \"Polyline\", \"Polygon\"],\r\n                index = YMaps.jQuery.inArray( type, allowObjects),\r\n                constructor = allowObjects[(index == -1) ? 0 : index];\r\n                description = description || \"\";\r\n            \r\n            var object = new YMaps[constructor](point, {style: style, hasBalloon : !!description});\r\n            object.description = description;\r\n            \r\n            return object;\r\n        }\r\n    });\r\n</script>\r\n\r\n<div id=\"YMapsID-1024\">&nbsp;</div>\r\n\r\n<div style=\"text-align:right\"><a href=\"http://api.yandex.ru/maps/tools/constructor/\" style=\"color:#1A3DC1\">Создано с помощью инструментов Яндекс.Карт</a></div>\r\n\r\n<div>+7 (495) 723-60-57</div>\r\n&nbsp;\r\n\r\n<div>+7 (495) 723-60-87</div>\r\n<br />\r\nБесплатная доставка по Москве!</div>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(16,5,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(17,6,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(18,6,'Текстовый блок',NULL,NULL,'NSCmsBundle:Blocks:contentBlock','content',0,0,0),(19,3,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:2610:\"<h3>Наша фирма занимается осетинскими пирогами с 2007 года.</h3>\r\n\r\n<p>Мы были одними из первых, кто решил поделится с москвичами чудесным вкусом осетинских пирогов.<br />\r\nНачиная работу три года назад, мы решили, сделать акцент на качестве, и вкусе наших пирогов и до сих пор мы не изменяем своему выбору.\\</p>\r\n\r\n<h3>Мы НЕ экономим на продуктах, а значит мы НЕ экономим на вас наши дорогие.</h3>\r\n\r\n<p>Тщательный отбор и строжайший контроль качества ингредиентов для приготовления наших пирогов, был и остается главным принципом в нашей работе. Все это мы делаем лишь для того, что бы вы могли прочувствовать всю прелесть и изысканность вкуса Настоящих осетинских пирогов.<br />\r\n<br />\r\nРассказывая все это вам, дорогой посетитель нашего сайта, мы прекрасно отдаем себе отчет, что вы возможно посетили не одну подобную веб страничку в интернете, прежде чем нашли нас, и во всех них написанно практичесски одно и то же...<br />\r\nЧем же отличаемся мы от десятка подобных фирм?<br />\r\nЗнаете, почти ничем, отличие всего лишь в одном, наши пироги просто вкуснее.<br />\r\n<br />\r\nООО &quot;Тарон&quot; - Осетинкие пироги<br />\r\nОГРН: 1117746084653<br />\r\nИНН/КПП: 7725715288/772501001<br />\r\nАдрес производства : 127055 г. Москва,, ул. Сущевская, д. 21, 2 подъезд, 1 этаж, пекарня<br />\r\nАдрес офиса: 115280, г. Москва, ул. Автозаводская, д. 17, корп. 3, офис 11</p>\r\n\r\n<p><strong>Прием заказов:</strong> с 09.00 до 21.00 без выходных.<br />\r\n<strong>Время доставки:</strong> 1- 1,5 часа.<br />\r\n<strong>Оплата:</strong> наличными курьеру.<br />\r\n<strong>Телефоны:</strong> (495) 723-60-57 (495) 723-60-87</p>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(20,10,'Товары',NULL,NULL,'NSCatalogBundle:Blocks:itemsBlock','content',0,0,0),(21,9,'Карточка товара',NULL,NULL,'NSCatalogBundle:Blocks:itemBlock','content',-1,0,0),(22,9,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(23,11,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(25,11,'Корзина посетителя',NULL,NULL,'MGFrontBundle:Blocks:cartBlock','content',0,0,0);
+INSERT INTO `ns_cms_blocks` VALUES (1,NULL,'Блок меню','NSCmsBundle:Blocks:menuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','header',0,0,0),(2,NULL,'Блок меню',NULL,NULL,'NSCmsBundle:Blocks:menuBlock','footer',1,0,0),(3,NULL,'Текстовый блок',NULL,NULL,'NSCmsBundle:Blocks:contentBlock','footer',0,0,0),(5,NULL,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:451:\"<span><strong>© 2014 МосГурман</strong> — осетинские пироги с душой!</span>\r\n						<p>Все права на материалы, находящиеся на сайте, охраняются в соответствии с законодательством РФ. <br>\r\n						При любом использовании материалов сайта, письменное согласие обязательно.</p>\";}','NSCmsBundle:Blocks:contentBlock','copyright',0,0,0),(7,NULL,'Блок меню','NSCmsBundle:Blocks:footerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','footer_menu',0,0,0),(8,NULL,'Меню категорий',NULL,'O:64:\"NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\":5:{s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0sortOrder\";s:81:\"osietinskiie-piroghi,sladkiie-piroghi,torty-i-diesierty,kulinariia,salaty,napitki\";s:74:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0template\";s:52:\"NSCatalogBundle:Blocks:categoriesMenuBlock.html.twig\";s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0isSubmenu\";b:0;s:75:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0routeName\";s:19:\"ns_catalog_category\";s:85:\"\0NS\\CatalogBundle\\Block\\Settings\\CategoriesMenuBlockSettingsModel\0redirectToFirstItem\";b:0;}','NSCatalogBundle:Blocks:categoriesMenuBlock','catalog_menu',0,0,0),(9,2,'Слайдер с изображениями',NULL,NULL,'MGFrontBundle:Blocks:sliderBlock','slider',0,0,0),(11,10,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(12,3,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(13,4,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(14,4,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:1182:\"<p>Наше предприятие занимается выпечкой осетинских пирогов с 2007г.</p>\r\n\r\n<p>Пироги выпекаются по оригинальному осетинскому рецепту с использованием ингредиентов высшего качества и при соблюдении всех санитарно-гигиенических норм и технических условий.</p>\r\n\r\n<h3><u>Минимальный заказ и район доставки уточняйте у оператора.</u></h3>\r\n\r\n<h3>Бесплатная доставка по Москве.</h3>\r\n\r\n<p><img alt=\"осетинские пироги телефон\" src=\"http://www.mosgurman.ru/images/stories/dostavka.jpg\" style=\"border:0px; float:left; height:93px; width:102px\" /></p>\r\n\r\n<p><strong>Прием заказов:</strong>&nbsp;с 09.00 до 21.00 без выходных.<br />\r\n<strong>Время доставки:</strong>&nbsp;1- 1,5 часа.<br />\r\n<strong>Оплата:</strong>&nbsp;наличными курьеру.<br />\r\n<strong>Телефоны:</strong>&nbsp;(495) 723-60-57 (495) 723-60-87</p>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(15,5,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:3015:\"<div>Компания ООО &laquo;Тарон&raquo;&nbsp;- мы занимаемся приготовлением, продажей и доставкой осетинских приогов</div>\r\n\r\n<div class=\"adr\">Адрес производства: 127055&nbsp;г. Москва,&nbsp;ул. Сущевская, д. 21, 2 подъезд, 1 этаж, пекарня</div>\r\n\r\n<div>Адрес офиса: 115280, г. Москва, ул. Автозаводская, д. 17, корп. 3, офис 11</div>\r\n\r\n<div>Мы работаем&nbsp;с 9.00 до 21.00\r\n<p><img alt=\"осетинские пироги телефон\" src=\"http://www.mosgurman.ru/images/stories/telef.jpg\" style=\"border:0px; float:left; height:55px; width:32px\" /></p>\r\n<script src=\"http://api-maps.yandex.ru/1.1/?key=AO8Pb04BAAAAYkHucgIAQ5fuVe1_bNLp6mxReq0QfGYCfJ4AAAAAAAAAAAB1q351VGWU0y6a-X8nQcbMjAbIOA==&modules=pmap&wizard=constructor\" type=\"text/javascript\"></script> <script type=\"text/javascript\">\r\n    YMaps.jQuery(window).load(function () {\r\n        var map = new YMaps.Map(YMaps.jQuery(\"#YMapsID-1024\")[0]);\r\n        map.setCenter(new YMaps.GeoPoint(37.599658,55.782696), 16, YMaps.MapType.MAP);\r\n        map.addControl(new YMaps.Zoom());\r\n        map.addControl(new YMaps.ToolBar());\r\n        YMaps.MapType.PMAP.getName = function () { return \"Народная\"; };\r\n        map.addControl(new YMaps.TypeControl([\r\n            YMaps.MapType.MAP,\r\n            YMaps.MapType.SATELLITE,\r\n            YMaps.MapType.HYBRID,\r\n            YMaps.MapType.PMAP\r\n        ], [0, 1, 2, 3]));\r\n\r\n        YMaps.Styles.add(\"constructor#pmlbmPlacemark\", {\r\n            iconStyle : {\r\n                href : \"http://api-maps.yandex.ru/i/0.3/placemarks/pmlbm.png\",\r\n                size : new YMaps.Point(28,29),\r\n                offset: new YMaps.Point(-8,-27)\r\n            }\r\n        });\r\n\r\n       map.addOverlay(createObject(\"Placemark\", new YMaps.GeoPoint(37.600495,55.782309), \"constructor#pmlbmPlacemark\", \"Москва, ул. Сущевская, д. 21,  2 подъезд, 1 этаж\"));\r\n        \r\n        function createObject (type, point, style, description) {\r\n            var allowObjects = [\"Placemark\", \"Polyline\", \"Polygon\"],\r\n                index = YMaps.jQuery.inArray( type, allowObjects),\r\n                constructor = allowObjects[(index == -1) ? 0 : index];\r\n                description = description || \"\";\r\n            \r\n            var object = new YMaps[constructor](point, {style: style, hasBalloon : !!description});\r\n            object.description = description;\r\n            \r\n            return object;\r\n        }\r\n    });\r\n</script>\r\n\r\n<div id=\"YMapsID-1024\">&nbsp;</div>\r\n\r\n<div style=\"text-align:right\"><a href=\"http://api.yandex.ru/maps/tools/constructor/\" style=\"color:#1A3DC1\">Создано с помощью инструментов Яндекс.Карт</a></div>\r\n\r\n<div>+7 (495) 723-60-57</div>\r\n&nbsp;\r\n\r\n<div>+7 (495) 723-60-87</div>\r\n<br />\r\nБесплатная доставка по Москве!</div>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(16,5,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(17,6,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(18,6,'Текстовый блок',NULL,NULL,'NSCmsBundle:Blocks:contentBlock','content',0,0,0),(19,3,'Текстовый блок',NULL,'O:53:\"NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\":1:{s:62:\"\0NS\\CmsBundle\\Block\\Settings\\ContentBlockSettingsModel\0content\";s:2610:\"<h3>Наша фирма занимается осетинскими пирогами с 2007 года.</h3>\r\n\r\n<p>Мы были одними из первых, кто решил поделится с москвичами чудесным вкусом осетинских пирогов.<br />\r\nНачиная работу три года назад, мы решили, сделать акцент на качестве, и вкусе наших пирогов и до сих пор мы не изменяем своему выбору.\\</p>\r\n\r\n<h3>Мы НЕ экономим на продуктах, а значит мы НЕ экономим на вас наши дорогие.</h3>\r\n\r\n<p>Тщательный отбор и строжайший контроль качества ингредиентов для приготовления наших пирогов, был и остается главным принципом в нашей работе. Все это мы делаем лишь для того, что бы вы могли прочувствовать всю прелесть и изысканность вкуса Настоящих осетинских пирогов.<br />\r\n<br />\r\nРассказывая все это вам, дорогой посетитель нашего сайта, мы прекрасно отдаем себе отчет, что вы возможно посетили не одну подобную веб страничку в интернете, прежде чем нашли нас, и во всех них написанно практичесски одно и то же...<br />\r\nЧем же отличаемся мы от десятка подобных фирм?<br />\r\nЗнаете, почти ничем, отличие всего лишь в одном, наши пироги просто вкуснее.<br />\r\n<br />\r\nООО &quot;Тарон&quot; - Осетинкие пироги<br />\r\nОГРН: 1117746084653<br />\r\nИНН/КПП: 7725715288/772501001<br />\r\nАдрес производства : 127055 г. Москва,, ул. Сущевская, д. 21, 2 подъезд, 1 этаж, пекарня<br />\r\nАдрес офиса: 115280, г. Москва, ул. Автозаводская, д. 17, корп. 3, офис 11</p>\r\n\r\n<p><strong>Прием заказов:</strong> с 09.00 до 21.00 без выходных.<br />\r\n<strong>Время доставки:</strong> 1- 1,5 часа.<br />\r\n<strong>Оплата:</strong> наличными курьеру.<br />\r\n<strong>Телефоны:</strong> (495) 723-60-57 (495) 723-60-87</p>\";}','NSCmsBundle:Blocks:contentBlock','content',0,0,0),(20,10,'Товары',NULL,NULL,'NSCatalogBundle:Blocks:itemsBlock','content',0,0,0),(21,9,'Карточка товара',NULL,NULL,'NSCatalogBundle:Blocks:itemBlock','content',-1,0,0),(22,9,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(23,11,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(25,11,'Корзина посетителя',NULL,NULL,'MGFrontBundle:Blocks:cartBlock','content',0,0,0),(26,12,'Заголовок страницы','NSCmsBundle:Blocks:headerMenuBlock.html.twig',NULL,'NSCmsBundle:Blocks:menuBlock','slider',0,0,0),(31,12,'Блок оформления заказа',NULL,NULL,'MGFrontBundle:Blocks:checkoutBlock','content',0,0,0);
 /*!40000 ALTER TABLE `ns_cms_blocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,7 +405,7 @@ CREATE TABLE `ns_cms_pages` (
   PRIMARY KEY (`id`),
   KEY `IDX_7D67FAB9727ACA70` (`parent_id`),
   CONSTRAINT `FK_7D67FAB9727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `ns_cms_pages` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -357,7 +414,7 @@ CREATE TABLE `ns_cms_pages` (
 
 LOCK TABLES `ns_cms_pages` WRITE;
 /*!40000 ALTER TABLE `ns_cms_pages` DISABLE KEYS */;
-INSERT INTO `ns_cms_pages` VALUES (1,NULL,1,0,20,1,'ns_cms_pages_root_page','ns_cms_pages_root_page',NULL,0,1),(2,1,2,1,9,1,'Главная','main','NSCmsBundle:Pages:page.html.twig',0,0),(3,1,10,1,11,1,'О компании','about','NSCmsBundle:Pages:page.html.twig',1,1),(4,1,12,1,13,1,'Оплата и доставка','payment-delivery','NSCmsBundle:Pages:page.html.twig',2,1),(5,1,14,1,15,1,'Контакты','contacts','NSCmsBundle:Pages:page.html.twig',3,1),(6,1,16,1,17,1,'Организация выездных банкетов','bankety','NSCmsBundle:Pages:page.html.twig',4,1),(8,2,3,2,8,1,'Каталог','catalog',NULL,0,1),(9,8,4,3,5,1,'Наше меню','item',NULL,0,1),(10,8,6,3,7,1,'Наше меню','category','NSCmsBundle:Pages:page.html.twig',1,1),(11,1,18,1,19,1,'Корзина','cart','NSCmsBundle:Pages:page.html.twig',5,0);
+INSERT INTO `ns_cms_pages` VALUES (1,NULL,1,0,22,1,'ns_cms_pages_root_page','ns_cms_pages_root_page',NULL,0,1),(2,1,2,1,9,1,'Главная','main','NSCmsBundle:Pages:page.html.twig',0,0),(3,1,10,1,11,1,'О компании','about','NSCmsBundle:Pages:page.html.twig',1,1),(4,1,12,1,13,1,'Оплата и доставка','payment-delivery','NSCmsBundle:Pages:page.html.twig',2,1),(5,1,14,1,15,1,'Контакты','contacts','NSCmsBundle:Pages:page.html.twig',3,1),(6,1,16,1,17,1,'Организация выездных банкетов','bankety','NSCmsBundle:Pages:page.html.twig',4,1),(8,2,3,2,8,1,'Каталог','catalog',NULL,0,1),(9,8,4,3,5,1,'Наше меню','item',NULL,0,1),(10,8,6,3,7,1,'Наше меню','category','NSCmsBundle:Pages:page.html.twig',1,1),(11,1,18,1,19,1,'Корзина','cart','NSCmsBundle:Pages:page.html.twig',5,0),(12,1,20,1,21,1,'Оформление заказа','checkout','NSCmsBundle:Pages:page.html.twig',6,0);
 /*!40000 ALTER TABLE `ns_cms_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,6 +468,34 @@ CREATE TABLE `ns_documents_documents` (
 LOCK TABLES `ns_documents_documents` WRITE;
 /*!40000 ALTER TABLE `ns_documents_documents` DISABLE KEYS */;
 /*!40000 ALTER TABLE `ns_documents_documents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ns_feedback_forms`
+--
+
+DROP TABLE IF EXISTS `ns_feedback_forms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ns_feedback_forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_id` int(11) DEFAULT NULL,
+  `template` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `emails` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_6FB48534C54C8C93` (`type_id`),
+  CONSTRAINT `FK_6FB48534C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `ns_catalog_types` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ns_feedback_forms`
+--
+
+LOCK TABLES `ns_feedback_forms` WRITE;
+/*!40000 ALTER TABLE `ns_feedback_forms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ns_feedback_forms` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -677,4 +762,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-27  0:45:13
+-- Dump completed on 2014-04-05 21:48:14
