@@ -130,7 +130,19 @@ MGApp.CartView = Backbone.View.extend({
   },
 
   onChangeSelect: function (e) {
-    this.calculateOrderPrice($(e.target).parents('.basket-block'));
+    var $basketBlock = $(e.target).parents('.basket-block');
+    var productModel = this.collection.get($basketBlock.data('order-id'));
+
+    if (productModel) {
+      productModel.set({
+        weight: $basketBlock.find('#weight-selector').val(),
+        count: $basketBlock.find('#count-selector').val()
+      });
+
+      productModel.save();
+    }
+
+    this.calculateOrderPrice($basketBlock);
   },
 
   redrawButton: function () {

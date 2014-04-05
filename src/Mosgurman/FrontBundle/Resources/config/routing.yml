@@ -12,6 +12,14 @@ mg_product_delete:
     requirements:
         id: \d+
 
+mg_product_edit:
+    path: /cartorder/products/{id}
+    methods: [PUT]
+    defaults:
+        _controller: MGFrontBundle:Cart:editProduct
+    requirements:
+        id: \d+
+
 mg_product_count:
     path: /cartorder/count
     methods: [GET]

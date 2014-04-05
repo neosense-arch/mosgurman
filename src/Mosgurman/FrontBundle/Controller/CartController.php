@@ -70,6 +70,41 @@ class CartController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
+    public function editProductAction(Request $request, $id)
+    {
+        $cartOrder = $this->getCartOrderManager()->findCartOrderById($id);
+
+        if (!$cartOrder instanceof CartOrder) {
+            return new JsonResponse(null, 400);
+        }
+
+        $requestData = @json_decode($request->getContent(), true);
+
+        $data = array(
+            'weight' => $requestData['weight'],
+            'count'  => $requestData['count'],
+        );
+
+        $form = $this->createCartOrderForm($cartOrder);
+        $form->submit($data, false);
+
+        if ($form->isValid()) {
+            $this->getCartOrderManager()->saveCartOrder($cartOrder);
+
+            return new JsonResponse(null, 204);
+        }
+
+        var_dump($form->getErrorsAsString());
+        die();
+
+        return new JsonResponse(null, 400);
+    }
+
+    /**
      * Delete product from cart
      *
      * @param Request $request

@@ -71,7 +71,10 @@
 
   {% if cart_orders is defined %}
     {% for order in cart_orders %}
-      products.add({ id: {{ order.id }} });
+      var product = new MGApp.ProductModel({ id: {{ order.id }} });
+      product.url = '{{ path('mg_product_edit', { 'id': order.id }) }}';
+
+      products.add(product);
     {% endfor %}
   {% endif %}
 
