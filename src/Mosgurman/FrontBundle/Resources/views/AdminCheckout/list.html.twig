@@ -1,0 +1,86 @@
+{% extends 'NSAdminBundle:Layout:col1.html.twig' %}
+
+{% block content_header %}
+  <h3>Список заказов</h3>
+{% endblock %}
+
+{% block content_content %}
+  <form
+      id="checkout-list"
+      action="{{ url('ns_admin_bundle', { 'adminBundle': 'MGFrontBundle', 'adminController': 'checkout', 'adminAction': 'status' }) }}"
+      method="POST">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Имя Фамилия</th>
+        <th>Номер телефона</th>
+        <th>Адрес</th>
+        <th>Время заказа</th>
+        <th style="width:80px">Детализация</th>
+        <th style="width:20px">Статус</th>
+        {#<th style="width:70px">&nbsp;</th>#}
+      </tr>
+      </thead>
+      <tbody>
+      {% if checkouts %}
+        {% for checkout in checkouts %}
+          <tr class="{% if checkout.isDelivered %}success{% endif %}">
+            <td>{{ checkout.name }} {{ checkout.surname }}</td>
+            <td>{{ checkout.phone }}</td>
+            <td>{{ checkout.address[:30] }}</td>
+            <td>
+              <span class="label">
+                {{ checkout.createdAt|date('j F y, H:i') }}
+              </span>
+            </td>
+            <td style="text-align: center"><a
+                  href="{{ url('ns_admin_bundle', { 'adminBundle': 'MGFrontBundle', 'adminController': 'checkout', 'adminAction': 'details', 'id': checkout.id }) }}">Подробно</a>
+            </td>
+            <td style="text-align: center">
+              <input {% if checkout.isDelivered %}checked="checked"{% endif %}
+                     type="checkbox"
+                     name="checkout_id"
+                     value="{{ checkout.id }}">
+            </td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+      </tbody>
+    </table>
+  </form>
+  {% if items_count > 25 %}
+    <div class="pagination">
+      {% set maxPage = (items_count / 25)|round %}
+      <ul>
+        {% for p in range(1, maxPage) %}
+          <li {% if page == p %}class="active"{% endif %}>
+            <a href="?page={{ p }}">{{ p }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <script type="text/javascript">
+    $(function () {
+      var $form = $('#checkout-list');
+
+      $form
+          .find('input:checkbox')
+          .on('click', function () {
+            var $checkbox = $(this);
+
+            $.post($form.prop('action'), { 'id': $(this).val() })
+                .done(function (data, status, jqxr) {
+                  if (jqxr.status == 200) {
+                    $checkbox.parents('tr').toggleClass('success');
+                  }
+                })
+                .error(function () {
+                  $checkbox.prop('checked', false);
+                });
+          })
+          .find(':checked').not('.success').addClass('success');
+    });
+  </script>
+{% endblock %}

@@ -68,4 +68,31 @@ class CheckoutManager
             $this->entityManager->flush();
         }
     }
+
+    public function findAllCheckoutsLimited($limit = null, $offset = null)
+    {
+        $queryBuilder = $this->repository
+            ->createQueryBuilder('c')
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
+        return $queryBuilder
+            ->getQuery()
+            ->execute();
+    }
+
+    public function findCheckoutById($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    public function getCheckoutsCount()
+    {
+        return $this->repository
+            ->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

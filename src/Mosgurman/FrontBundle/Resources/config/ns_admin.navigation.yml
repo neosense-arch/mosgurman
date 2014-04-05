@@ -5,3 +5,6 @@
         -
             action: "checkout:mails"
             label: "Адреса электропочты"
+-
+    label:  "Заказы"
+    action: "checkout:list"
