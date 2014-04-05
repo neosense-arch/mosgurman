@@ -106,7 +106,7 @@ MGApp.CartView = Backbone.View.extend({
 
   calculateOrderPrice: function ($basketBlock) {
     var price = $basketBlock.children('.weight').children('select').find(':selected').data('price');
-    var count = $basketBlock.children('.quantity').children('select').find(':selected').val();
+    var count = $basketBlock.find('#count-selector').val();
     var cost = parseInt(price) * parseInt(count);
 
     this._costs[$basketBlock.index()] = cost;
