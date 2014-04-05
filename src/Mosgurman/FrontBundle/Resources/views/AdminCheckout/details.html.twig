@@ -1,47 +1,52 @@
 {% extends 'NSAdminBundle:Layout:col1.html.twig' %}
 
 {% block content_header %}
-  <h3>Заказ номер #{{ checkout.id }}</h3>
+  {% if checkout %}
+    <h3>Заказ номер #{{ checkout.id }}</h3>
+  {% else %}
+    <h3>Заказ был удален или не существует</h3>
+  {% endif %}
   <p>
     <a href="{{ url('ns_admin_bundle', { 'adminBundle': 'MGFrontBundle', 'adminController': 'checkout', 'adminAction': 'list'}) }}">Список
       заказов</a></p>
 {% endblock %}
 
 {% block content_content %}
-  {% if checkout.isDelivered %}
-    <div class="alert alert-success text-center">Заказ выполнен</div>
-  {% else %}
-    <div class="alert text-center">Заказ в обработке</div>
+  {% if checkout %}
+    {% if checkout.isDelivered %}
+      <div class="alert alert-success text-center">Заказ выполнен</div>
+    {% else %}
+      <div class="alert text-center">Заказ в обработке</div>
+    {% endif %}
+
+    <div class="well">
+      <h4>{{ checkout.createdAt|date('j F y, H:i') }}</h4>
+    </div>
+
+    <div class="well">
+      <address>
+        <h4>{{ checkout.name }} {{ checkout.surname }}</h4><br>
+        <abbr title="Phone">Адрес:</abbr> {{ checkout.address }}<br>
+        <abbr title="Phone">Телефон:</abbr> {{ checkout.phone }}<br>
+        {% if checkout.comment %}
+          <abbr title="Phone">Комментарий:</abbr>
+          <p>{{ checkout.comment }}</p>
+        {% endif %}
+      </address>
+    </div>
+
+    <div class="well">
+      <ul>
+        {% for cartOrder in checkout.customer.cartOrders %}
+          <li>
+            <strong>{{ cartOrder.item.title }}</strong>
+            <ul>
+              <li><abbr title="Вес">Вес</abbr>: <strong>{{ cartOrder.weight }}</strong></li>
+              <li><abbr title="Количество">Количество</abbr>: <strong>{{ cartOrder.count }}</strong></li>
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   {% endif %}
-
-  <div class="well">
-    <h4>{{ checkout.createdAt|date('j F y, H:i') }}</h4>
-  </div>
-
-  <div class="well">
-    <address>
-      <h4>{{ checkout.name }} {{ checkout.surname }}</h4><br>
-      <abbr title="Phone">Адрес:</abbr> {{ checkout.address }}<br>
-      <abbr title="Phone">Телефон:</abbr> {{ checkout.phone }}<br>
-      {% if checkout.comment %}
-        <abbr title="Phone">Комментарий:</abbr>
-        <p>{{ checkout.comment }}</p>
-      {% endif %}
-    </address>
-  </div>
-
-  <div class="well">
-    <ul>
-      {% for cartOrder in checkout.customer.cartOrders %}
-      <li>
-        <strong>{{ cartOrder.item.title }}</strong>
-        <ul>
-          <li><abbr title="Вес">Вес</abbr>: <strong>{{ cartOrder.weight }}</strong></li>
-          <li><abbr title="Количество">Количество</abbr>: <strong>{{ cartOrder.count }}</strong></li>
-        </ul>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-
 {% endblock %}
