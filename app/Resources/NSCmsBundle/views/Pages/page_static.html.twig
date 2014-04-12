@@ -1,0 +1,9 @@
+{% extends "NSCmsBundle:Pages:page.html.twig" %}
+
+{% block main %}
+  <div id="main">
+    <div class="block-current-page">
+      {{ ns_cms_area(blocks, 'content') }}
+    </div>
+  </div>
+{% endblock %}
