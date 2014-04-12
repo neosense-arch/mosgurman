@@ -1,0 +1,18 @@
+{% extends "NSCmsBundle:Pages:page.html.twig" %}
+
+{% block main %}
+  <div id="main">
+    {{ ns_cms_area(blocks, 'content') }}
+    <div class="conteyner">
+      <div class="text">
+        {{ ns_cms_area(blocks, 'left_bottom_text') }}
+      </div>
+      <div class="shipping-payment">
+        {{ ns_cms_area(blocks, 'middle_bottom_text') }}
+      </div>
+      <div class="reviews">
+        {{ ns_cms_area(blocks, 'right_bottom_text') }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

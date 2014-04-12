@@ -15,7 +15,9 @@
 {% endblock nav %}
 
 {% block main %}
-  {{ ns_cms_area(blocks, 'content') }}
+  <div id="main">
+    {{ ns_cms_area(blocks, 'content') }}
+  </div>
 {% endblock main %}
 
 {% block footer %}

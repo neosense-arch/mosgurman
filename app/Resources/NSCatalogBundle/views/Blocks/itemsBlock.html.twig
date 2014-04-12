@@ -21,105 +21,103 @@
   {% endif %}
 {% endfor %}
 
-<div id="main2">
-  <div id="mtab1" class="tab">
-    <div class="tab-form">
-      <ul class="tabset multi-tabset">
+<div id="mtab1" class="tab">
+  <div class="tab-form">
+    <ul class="tabset multi-tabset">
+      <li>
+        <a href="#m1tab1" class="active">
+          <img src="{{ asset('bundles/mgfront/images/all.png') }}">
+          <span>Все пироги</span>
+        </a>
+      </li>
+      {% if hot %}
         <li>
-          <a href="#m1tab1" class="active">
-            <img src="{{ asset('bundles/mgfront/images/all.png') }}">
-            <span>Все пироги</span>
+          <a href="#m1tab2">
+            <img src="{{ asset('bundles/mgfront/images/hot.png') }}">
+            <span>Острые</span>
           </a>
         </li>
-        {% if hot %}
-          <li>
-            <a href="#m1tab2">
-              <img src="{{ asset('bundles/mgfront/images/hot.png') }}">
-              <span>Острые</span>
-            </a>
-          </li>
-        {% endif %}
-        {% if nomeat %}
-          <li>
-            <a href="#m1tab3">
-              <img src="{{ asset('bundles/mgfront/images/nomeat.png') }}">
-              <span>Постные</span>
-            </a>
-          </li>
-        {% endif %}
-        {% if sweet %}
-          <li>
-            <a href="#m1tab4">
-              <img src="{{ asset('bundles/mgfront/images/sweet.png') }}">
-              <span>Сладкие</span>
-            </a>
-          </li>
-        {% endif %}
-        {% if season %}
-          <li>
-            <a href="#m1tab5">
-              <img src="{{ asset('bundles/mgfront/images/season.png') }}">
-              <span>Сезонные</span>
-            </a>
-          </li>
-        {% endif %}
-      </ul>
+      {% endif %}
+      {% if nomeat %}
+        <li>
+          <a href="#m1tab3">
+            <img src="{{ asset('bundles/mgfront/images/nomeat.png') }}">
+            <span>Постные</span>
+          </a>
+        </li>
+      {% endif %}
+      {% if sweet %}
+        <li>
+          <a href="#m1tab4">
+            <img src="{{ asset('bundles/mgfront/images/sweet.png') }}">
+            <span>Сладкие</span>
+          </a>
+        </li>
+      {% endif %}
+      {% if season %}
+        <li>
+          <a href="#m1tab5">
+            <img src="{{ asset('bundles/mgfront/images/season.png') }}">
+            <span>Сезонные</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="tab-list">
+    <div id="m1tab1">
+      <div class="items">
+        <ul>
+          {% for item in items %}
+            <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
+              {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-    <div class="tab-list">
-      <div id="m1tab1">
-        <div class="items">
-          <ul>
-            {% for item in items %}
-              <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+    <div id="m1tab2">
+      <div class="items">
+        <ul>
+          {% for item in items if item.settings.group == 'hot' %}
+            <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
+              {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
-      <div id="m1tab2">
-        <div class="items">
-          <ul>
-            {% for item in items if item.settings.group == 'hot' %}
-              <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+    </div>
+    <div id="m1tab3">
+      <div class="items">
+        <ul>
+          {% for item in items if item.settings.group == 'nomeat' %}
+            <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
+              {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
-      <div id="m1tab3">
-        <div class="items">
-          <ul>
-            {% for item in items if item.settings.group == 'nomeat' %}
-              <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+    </div>
+    <div id="m1tab4">
+      <div class="items">
+        <ul>
+          {% for item in items if item.settings.group == 'sweet' %}
+            <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
+              {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
-      <div id="m1tab4">
-        <div class="items">
-          <ul>
-            {% for item in items if item.settings.group == 'sweet' %}
-              <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      <div id="m1tab5">
-        <div class="items">
-          <ul>
-            {% for item in items if item.settings.group == 'season' %}
-              <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+    </div>
+    <div id="m1tab5">
+      <div class="items">
+        <ul>
+          {% for item in items if item.settings.group == 'season' %}
+            <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
+              {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
