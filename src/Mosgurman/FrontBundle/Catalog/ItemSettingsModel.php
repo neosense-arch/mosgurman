@@ -72,13 +72,17 @@ class ItemSettingsModel extends AbstractSettings
      */
     protected $isSale;
 
+    /**
+     * @var boolean
+     */
+    protected $isIndex;
+
     public function __construct()
     {
-        $this
-            ->setIsNew(false)
-            ->setIsSale(false)
-            ->setGroup(self::GROUP_ALL)
-        ;
+        $this->isNew = false;
+        $this->isSale = false;
+        $this->isIndex = false;
+        $this->group = self::GROUP_ALL;
     }
 
     /**
@@ -212,6 +216,25 @@ class ItemSettingsModel extends AbstractSettings
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * @param boolean $isIndex
+     * @return $this
+     */
+    public function setIsIndex($isIndex)
+    {
+        $this->isIndex = (bool)$isIndex;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsIndex()
+    {
+        return $this->isIndex;
     }
 
     /**

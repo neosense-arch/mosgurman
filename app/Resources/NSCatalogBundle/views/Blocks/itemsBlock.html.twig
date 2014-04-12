@@ -32,46 +32,38 @@
           </a>
         </li>
         {% if hot %}
-        <li>
-          <a href="#m1tab2">
-            <img src="{{ asset('bundles/mgfront/images/hot.png') }}">
-            <span>Острые</span>
-          </a>
-        </li>
+          <li>
+            <a href="#m1tab2">
+              <img src="{{ asset('bundles/mgfront/images/hot.png') }}">
+              <span>Острые</span>
+            </a>
+          </li>
         {% endif %}
         {% if nomeat %}
-        <li>
-          <a href="#m1tab3">
-            <img src="{{ asset('bundles/mgfront/images/nomeat.png') }}">
-            <span>Постные</span>
-          </a>
-        </li>
+          <li>
+            <a href="#m1tab3">
+              <img src="{{ asset('bundles/mgfront/images/nomeat.png') }}">
+              <span>Постные</span>
+            </a>
+          </li>
         {% endif %}
         {% if sweet %}
-        <li>
-          <a href="#m1tab4">
-            <img src="{{ asset('bundles/mgfront/images/sweet.png') }}">
-            <span>Сладкие</span>
-          </a>
-        </li>
+          <li>
+            <a href="#m1tab4">
+              <img src="{{ asset('bundles/mgfront/images/sweet.png') }}">
+              <span>Сладкие</span>
+            </a>
+          </li>
         {% endif %}
         {% if season %}
-        <li>
-          <a href="#m1tab5">
-            <img src="{{ asset('bundles/mgfront/images/season.png') }}">
-            <span>Сезонные</span>
-          </a>
-        </li>
+          <li>
+            <a href="#m1tab5">
+              <img src="{{ asset('bundles/mgfront/images/season.png') }}">
+              <span>Сезонные</span>
+            </a>
+          </li>
         {% endif %}
       </ul>
-      {#<div class="search-form">#}
-      {#<form action="">#}
-      {#<fieldset>#}
-      {#<input type="text" value="Поиск по названию...">#}
-      {#<input type="submit" value="">#}
-      {#</fieldset>#}
-      {#</form>#}
-      {#</div>#}
     </div>
     <div class="tab-list">
       <div id="m1tab1">
@@ -79,60 +71,7 @@
           <ul>
             {% for item in items %}
               <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                <div class="icon">
-                  {% if item.settings.group %}
-                    <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}"/>
-                  {% endif %}
-                </div>
-                {% if item.settings.isNew %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg3.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Новинка осетинский пирог">
-                  </div>
-                {% endif %}
-                {% if item.settings.isSale %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg2.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Скидка на осетинский пирог">
-                  </div>
-                {% endif %}
-                <div class="item-img">
-                  <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-                    <img src="{{ '/upload/j/' ~ item.settings.photo }}"
-                         alt="{{ item.title }}"
-                         width="243" height="156"/>
-                  </a>
-                </div>
-                <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">{{ item.title }}</a>
-
-                <div class="price">
-                  <ul>
-                    {% for price in item.settings.prices %}
-                      {% if loop.index < 4 %}
-                        <li>
-                          <span>{{ price.weight }} г</span>
-                          <strong>{{ price.price }} руб</strong>
-
-                          <div class="drop">
-                            <span>{{ price.weight }} г</span>
-                            <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
-                              <li><a href="#">1 пирог</a></li>
-                              <li><a href="#">2 пирога</a></li>
-                              <li><a href="#">3 пирога</a></li>
-                              <li><a href="#">4 пирога</a></li>
-                              <li><a href="#">5 пирогов</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
+                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
               </li>
             {% endfor %}
           </ul>
@@ -143,60 +82,7 @@
           <ul>
             {% for item in items if item.settings.group == 'hot' %}
               <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                <div class="icon">
-                  {% if item.settings.group %}
-                    <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}"/>
-                  {% endif %}
-                </div>
-                {% if item.settings.isNew %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg3.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Новинка осетинский пирог">
-                  </div>
-                {% endif %}
-                {% if item.settings.isSale %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg2.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Скидка на осетинский пирог">
-                  </div>
-                {% endif %}
-                <div class="item-img">
-                  <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-                    <img src="{{ '/upload/j/' ~ item.settings.photo }}"
-                         alt="{{ item.title }}"
-                         width="243" height="156"/>
-                  </a>
-                </div>
-                <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">{{ item.title }}</a>
-
-                <div class="price">
-                  <ul>
-                    {% for price in item.settings.prices %}
-                      {% if loop.index < 4 %}
-                        <li>
-                          <span>{{ price.weight }} г</span>
-                          <strong>{{ price.price }} руб</strong>
-
-                          <div class="drop">
-                            <span>{{ price.weight }} г</span>
-                            <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
-                              <li><a href="#">1 пирог</a></li>
-                              <li><a href="#">2 пирога</a></li>
-                              <li><a href="#">3 пирога</a></li>
-                              <li><a href="#">4 пирога</a></li>
-                              <li><a href="#">5 пирогов</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
+                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
               </li>
             {% endfor %}
           </ul>
@@ -207,60 +93,7 @@
           <ul>
             {% for item in items if item.settings.group == 'nomeat' %}
               <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                <div class="icon">
-                  {% if item.settings.group %}
-                    <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}"/>
-                  {% endif %}
-                </div>
-                {% if item.settings.isNew %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg3.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Новинка осетинский пирог">
-                  </div>
-                {% endif %}
-                {% if item.settings.isSale %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg2.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Скидка на осетинский пирог">
-                  </div>
-                {% endif %}
-                <div class="item-img">
-                  <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-                    <img src="{{ '/upload/j/' ~ item.settings.photo }}"
-                         alt="{{ item.title }}"
-                         width="243" height="156"/>
-                  </a>
-                </div>
-                <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">{{ item.title }}</a>
-
-                <div class="price">
-                  <ul>
-                    {% for price in item.settings.prices %}
-                      {% if loop.index < 4 %}
-                        <li>
-                          <span>{{ price.weight }} г</span>
-                          <strong>{{ price.price }} руб</strong>
-
-                          <div class="drop">
-                            <span>{{ price.weight }} г</span>
-                            <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
-                              <li><a href="#">1 пирог</a></li>
-                              <li><a href="#">2 пирога</a></li>
-                              <li><a href="#">3 пирога</a></li>
-                              <li><a href="#">4 пирога</a></li>
-                              <li><a href="#">5 пирогов</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
+                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
               </li>
             {% endfor %}
           </ul>
@@ -271,60 +104,7 @@
           <ul>
             {% for item in items if item.settings.group == 'sweet' %}
               <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                <div class="icon">
-                  {% if item.settings.group %}
-                    <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}"/>
-                  {% endif %}
-                </div>
-                {% if item.settings.isNew %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg3.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Новинка осетинский пирог">
-                  </div>
-                {% endif %}
-                {% if item.settings.isSale %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg2.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Скидка на осетинский пирог">
-                  </div>
-                {% endif %}
-                <div class="item-img">
-                  <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-                    <img src="{{ '/upload/j/' ~ item.settings.photo }}"
-                         alt="{{ item.title }}"
-                         width="243" height="156"/>
-                  </a>
-                </div>
-                <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">{{ item.title }}</a>
-
-                <div class="price">
-                  <ul>
-                    {% for price in item.settings.prices %}
-                      {% if loop.index < 4 %}
-                        <li>
-                          <span>{{ price.weight }} г</span>
-                          <strong>{{ price.price }} руб</strong>
-
-                          <div class="drop">
-                            <span>{{ price.weight }} г</span>
-                            <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
-                              <li><a href="#">1 пирог</a></li>
-                              <li><a href="#">2 пирога</a></li>
-                              <li><a href="#">3 пирога</a></li>
-                              <li><a href="#">4 пирога</a></li>
-                              <li><a href="#">5 пирогов</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
+                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
               </li>
             {% endfor %}
           </ul>
@@ -335,60 +115,7 @@
           <ul>
             {% for item in items if item.settings.group == 'season' %}
               <li{% if loop.index % 4 == 0 %} class="nth"{% endif %}>
-                <div class="icon">
-                  {% if item.settings.group %}
-                    <img src="{{ asset('bundles/mgfront/images/' ~ item.settings.group|default('all') ~ '.png') }}"/>
-                  {% endif %}
-                </div>
-                {% if item.settings.isNew %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg3.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Новинка осетинский пирог">
-                  </div>
-                {% endif %}
-                {% if item.settings.isSale %}
-                  <div class="icon2">
-                    <img src="{{ asset('bundles/mgfront/images/bg2.png') }}"
-                         width="78"
-                         height="46"
-                         alt="Скидка на осетинский пирог">
-                  </div>
-                {% endif %}
-                <div class="item-img">
-                  <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-                    <img src="{{ '/upload/j/' ~ item.settings.photo }}"
-                         alt="{{ item.title }}"
-                         width="243" height="156"/>
-                  </a>
-                </div>
-                <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">{{ item.title }}</a>
-
-                <div class="price">
-                  <ul>
-                    {% for price in item.settings.prices %}
-                      {% if loop.index < 4 %}
-                        <li>
-                          <span>{{ price.weight }} г</span>
-                          <strong>{{ price.price }} руб</strong>
-
-                          <div class="drop">
-                            <span>{{ price.weight }} г</span>
-                            <strong>{{ price.price }} руб</strong>
-                            <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
-                              <li><a href="#">1 пирог</a></li>
-                              <li><a href="#">2 пирога</a></li>
-                              <li><a href="#">3 пирога</a></li>
-                              <li><a href="#">4 пирога</a></li>
-                              <li><a href="#">5 пирогов</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
+                {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
               </li>
             {% endfor %}
           </ul>
@@ -396,26 +123,22 @@
       </div>
     </div>
   </div>
-  {#<div class="more">#}
-  {#<a href="#">Показать еще</a>#}
-  {#</div>#}
 </div>
 
 {% javascripts
-  '@MGFrontBundle/Resources/public/js/app/ProductModel.js'
-  '@MGFrontBundle/Resources/public/js/app/CatalogView.js' %}
-  <script src="{{ asset_url }}"></script>
+'@MGFrontBundle/Resources/public/js/app/ProductModel.js'
+'@MGFrontBundle/Resources/public/js/app/CatalogView.js' %}
+<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
 <script type="text/javascript">
-    var products = new MGApp.ProductCollection();
+  var products = new MGApp.ProductCollection();
 
-    products.url = '{{ path('mg_product_add') }}';
-    products.length = parseInt($('.cart > .number > a').text());
+  products.url = '{{ path('mg_product_add') }}';
+  products.length = parseInt($('.cart > .number > a').text());
 
-
-    new MGApp.CatalogView({
-      el: $('#main2'),
-      collection: products
-    });
+  new MGApp.CatalogView({
+    el: $('#main2'),
+    collection: products
+  });
 </script>

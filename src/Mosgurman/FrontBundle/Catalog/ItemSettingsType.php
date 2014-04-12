@@ -31,6 +31,10 @@ class ItemSettingsType extends AbstractType
                     ItemSettingsModel::GROUP_SEASON => 'Сезонные',
                 ),
             ))
+            ->add('isIndex', 'checkbox', array(
+                'label'    => 'На главной?',
+                'required' => false,
+            ))
             ->add('isNew', 'checkbox', array(
                 'label'    => 'Новинка?',
                 'required' => false,
@@ -39,7 +43,7 @@ class ItemSettingsType extends AbstractType
                 'label'    => 'Скидка?',
                 'required' => false,
             ))
-            ->add('brief', 'textarea', array(
+            ->add('brief', 'ckeditor', array(
                 'label'    => 'Описание',
                 'required' => false,
             ))

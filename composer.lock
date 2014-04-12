@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "95a56f5f129c75ce4c5cfcd1c8888940",
+    "hash": "a71227ea4dabf2590c764e5a9c84ff4f",
     "packages": [
         {
             "name": "avalanche123/imagine-bundle",
@@ -2257,12 +2257,12 @@
         },
         {
             "name": "neosense/admin-bundle",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "target-dir": "NS/AdminBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nsadminbundle.git",
-                "reference": "5e1dc3d202b4b6fdb2ca34d3886f18c81edaf083"
+                "reference": "747204c68f9291afb64e8ded8e4160cb52df59cf"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2286,7 +2286,7 @@
             "keywords": [
                 "admin"
             ],
-            "time": "2014-03-29 20:24:43"
+            "time": "2014-04-06 09:42:33"
         },
         {
             "name": "neosense/cache-bundle",
@@ -2319,12 +2319,12 @@
         },
         {
             "name": "neosense/catalog-bundle",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "target-dir": "NS/CatalogBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscatalogbundle.git",
-                "reference": "5df0d73402e0860f3218c7c8ffa9dd36042bd27d"
+                "reference": "07199daedc34b48c77e15c7c597519f9bbd7fef8"
             },
             "require": {
                 "neosense/cms-bundle": ">=1.5.0",
@@ -2349,16 +2349,16 @@
                 "catalog",
                 "eshop"
             ],
-            "time": "2014-03-22 20:51:18"
+            "time": "2014-04-06 10:20:19"
         },
         {
             "name": "neosense/cms-bundle",
-            "version": "1.13.2",
+            "version": "1.13.3",
             "target-dir": "NS/CmsBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscmsbundle.git",
-                "reference": "c435d345775bf95713f85d1ec8a792254b9304b0"
+                "reference": "9bf2f7c59b98d926c21984a0941a45a049b51ad0"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -2383,16 +2383,16 @@
                 "blocks",
                 "cms"
             ],
-            "time": "2014-03-28 13:57:03"
+            "time": "2014-03-31 14:06:20"
         },
         {
             "name": "neosense/core-bundle",
-            "version": "1.20.0",
+            "version": "1.21.0",
             "target-dir": "NS/CoreBundle",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:phpinfo/nscorebundle.git",
-                "reference": "4d3a6ca7026ef73b88991e618aa65f95513777e6"
+                "reference": "609874ff2a7842591f9121aded19028a2f1b450b"
             },
             "require": {
                 "avalanche123/imagine-bundle": "2.1.*",
@@ -2413,9 +2413,9 @@
                 "knplabs/knp-paginator-bundle": "2.4.*",
                 "liuggio/excelbundle": "1.0.*",
                 "mopa/bootstrap-bundle": "2.2.*@alpha",
-                "neosense/admin-bundle": "1.8.*",
+                "neosense/admin-bundle": "1.9.*",
                 "neosense/cache-bundle": "1.2.*",
-                "neosense/catalog-bundle": "1.10.*",
+                "neosense/catalog-bundle": "1.11.*",
                 "neosense/cms-bundle": "1.13.*",
                 "neosense/deploy-bundle": "1.1.*",
                 "neosense/documents-bundle": "1.1.*",
@@ -2458,7 +2458,7 @@
                 }
             ],
             "description": "NS Core Bundle",
-            "time": "2014-03-29 20:27:56"
+            "time": "2014-04-06 21:47:35"
         },
         {
             "name": "neosense/deploy-bundle",
@@ -3219,16 +3219,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.0.3",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "32edc3b0de0fdc1b10f5c4912e8677b3f411a230"
+                "reference": "748c01c1144713ac0118396935d10b6ceec91b68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/32edc3b0de0fdc1b10f5c4912e8677b3f411a230",
-                "reference": "32edc3b0de0fdc1b10f5c4912e8677b3f411a230",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/748c01c1144713ac0118396935d10b6ceec91b68",
+                "reference": "748c01c1144713ac0118396935d10b6ceec91b68",
                 "shasum": ""
             },
             "require": {
@@ -3266,7 +3266,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2013-12-03 13:33:24"
+            "time": "2014-03-18 09:03:27"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -3442,22 +3442,22 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.5",
+            "version": "v2.3.7",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321"
+                "reference": "e98defd402f72e8b54a029ba4d3ac4cb51dc3577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
-                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/e98defd402f72e8b54a029ba4d3ac4cb51dc3577",
+                "reference": "e98defd402f72e8b54a029ba4d3ac4cb51dc3577",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "swiftmailer/swiftmailer": ">=4.2.0,<5.1-dev",
+                "swiftmailer/swiftmailer": ">=4.2.0,~5.0",
                 "symfony/swiftmailer-bridge": "~2.1"
             },
             "require-dev": {
@@ -3469,7 +3469,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -3495,20 +3495,20 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2013-11-21 12:29:01"
+            "time": "2014-04-05 17:15:52"
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "b70633f92ff71ef490af4c17e7ca3f3bf3d0f304"
+                "reference": "3199b2e0d194f71fe2e13c95768b2ef22206682b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b70633f92ff71ef490af4c17e7ca3f3bf3d0f304",
-                "reference": "b70633f92ff71ef490af4c17e7ca3f3bf3d0f304",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/3199b2e0d194f71fe2e13c95768b2ef22206682b",
+                "reference": "3199b2e0d194f71fe2e13c95768b2ef22206682b",
                 "shasum": ""
             },
             "require": {
@@ -3610,7 +3610,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-02-12 19:27:03"
+            "time": "2014-04-04 10:27:02"
         },
         {
             "name": "trsteel/ckeditor-bundle",
