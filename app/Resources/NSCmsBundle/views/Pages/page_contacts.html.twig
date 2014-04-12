@@ -1,0 +1,16 @@
+{% extends "NSCmsBundle:Pages:page.html.twig" %}
+
+{% block main %}
+  <div id="main">
+    <div class="checkout">
+      <div class="checkout-left checkout-left2">
+        {{ ns_cms_area(blocks, 'map') }}
+      </div>
+      <div class="checkout-right2">
+        <div class="shipping-payment shipping-payment2">
+          {{ ns_cms_area(blocks, 'content') }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

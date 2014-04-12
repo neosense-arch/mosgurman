@@ -89,3 +89,33 @@ templates:
                 name: footer_menu
                 title: "Меню в подвале"
                 fixed: true
+    -
+        path:    "NSCmsBundle:Pages:page_contacts.html.twig"
+        title:   "Шаблон для страницы контактов"
+        default: false
+        areas:
+            -
+                name: header
+                title: "Верхняя панель"
+                fixed: true
+            -
+                name: slider
+                title: "Панель заголовка страницы"
+            -
+                name: catalog_menu
+                title: "Меню категорий из каталога"
+                fixed: true
+            -
+                name: map
+                title: "Блок карты"
+            -
+                name: content
+                title: "Контентная область"
+            -
+                name: copyright
+                title: "Текст копирайта"
+                fixed: true
+            -
+                name: footer_menu
+                title: "Меню в подвале"
+                fixed: true
