@@ -83,7 +83,7 @@ MGApp.CartView = Backbone.View.extend({
   },
 
   addProduct: function () {
-    this.redrawProductCount();
+    this.incrementProductCount();
     this.redrawButton();
   },
 
@@ -96,7 +96,7 @@ MGApp.CartView = Backbone.View.extend({
       this.remove();
     });
 
-    this.redrawProductCount();
+    this.incrementProductCount();
     this.calculateSummaryPrice();
   },
 

@@ -9,6 +9,7 @@
 
 namespace Mosgurman\FrontBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Mosgurman\FrontBundle\Entity\Checkout;
 use Mosgurman\FrontBundle\Entity\Customer;
 use Mosgurman\FrontBundle\Form\CheckoutType;
@@ -109,6 +110,42 @@ class BlocksController extends Controller
         return $this->render('MGFrontBundle:Blocks:checkoutBlock.html.twig', array(
             'form' => $form->createView(),
             'cost' => $cost,
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function suggestItemsBlockAction(Request $request)
+    {
+        $itemSlug = $request->attributes->get('itemSlug');
+        /** @var \NS\CatalogBundle\Entity\Item $item */
+        $item = $this->get('ns_catalog_service')->getItemBySlug($itemSlug);
+
+        $group = $item->getSettings()->getGroup();
+        $groupItems = $this->get('ns_catalog_service')
+            ->getItemsPaged(1, 4, null, null, array('group' => $group));
+
+        $categorySlug = $request->attributes->get('categorySlug');
+        /** @var \NS\CatalogBundle\Entity\Category $item */
+        $category = $this->get('ns_catalog_service')->getCategoryBySlug($categorySlug);
+        $categoryItems = $this->get('ns_catalog_service')
+            ->getItemsPaged(1, 4, null, $category);
+
+        $originalItems = array_merge($groupItems->getItems(), $categoryItems->getItems());
+        $items = new ArrayCollection($originalItems);
+
+        if ($item) {
+            $items = $items->filter(
+                function ($i) use ($item) {
+                    return $i->getId() !== $item->getId();
+                }
+            );
+        }
+
+        return $this->render('MGFrontBundle:Blocks:suggestItemsBlock.html.twig', array(
+            'items' => $items->slice(0, 4),
         ));
     }
 

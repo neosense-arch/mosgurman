@@ -17,7 +17,6 @@ MGApp.CatalogView = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'add', this.addProductToCart);
-    this.listenTo(this.collection, 'remove', this.removeProductFromCart);
   },
 
   onProductCountClick: function (e) {
@@ -38,15 +37,12 @@ MGApp.CatalogView = Backbone.View.extend({
 
   addProductToCart: function (model) {
     model.save();
-    this.redrawProductCount();
+    this.incrementProductCount();
   },
 
-  removeProductFromCart: function () {
-    this.redrawProductCount();
-  },
-
-  redrawProductCount: function () {
-    $('.cart > .number > a').text(this.collection.length);
+  incrementProductCount: function () {
+    var count = parseInt($('.cart > .number > a').text());
+    $('.cart > .number > a').text(count + 1);
   }
 
 });

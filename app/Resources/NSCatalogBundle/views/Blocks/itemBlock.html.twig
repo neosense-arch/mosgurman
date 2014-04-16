@@ -66,6 +66,7 @@
 
 {% javascripts
   '@MGFrontBundle/Resources/public/js/app/ProductModel.js'
+  '@MGFrontBundle/Resources/public/js/app/CatalogView.js'
   '@MGFrontBundle/Resources/public/js/app/ItemView.js' %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
@@ -76,9 +77,7 @@
     jcf.customForms.replaceAll();
 
     var products = new MGApp.ProductCollection();
-
     products.url = '{{ path('mg_product_add') }}';
-    products.length = parseInt($('.cart > .number > a').text());
 
     new MGApp.ItemView({
       el: $('#items-selector'),

@@ -8,3 +8,6 @@ blocks:
     -
         name: MGFrontBundle:Blocks:checkoutBlock
         title: Блок оформления заказа
+    -
+        name: MGFrontBundle:Blocks:suggestItemsBlock
+        title: Блок похожих блюд

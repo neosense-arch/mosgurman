@@ -47,11 +47,12 @@ MGApp.ItemView = Backbone.View.extend({
 
   addProductToCart: function (model) {
     model.save();
-    this.redrawProductCount();
+    this.incrementProductCount();
   },
 
-  redrawProductCount: function () {
-    $('.cart > .number > a').text(this.collection.length);
+  incrementProductCount: function () {
+    var count = parseInt($('.cart > .number > a').text());
+    $('.cart > .number > a').text(count + 1);
   }
 
 });

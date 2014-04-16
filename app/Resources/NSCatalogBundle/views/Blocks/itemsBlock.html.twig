@@ -131,9 +131,7 @@
 
 <script type="text/javascript">
   var products = new MGApp.ProductCollection();
-
   products.url = '{{ path('mg_product_add') }}';
-  products.length = parseInt($('.cart > .number > a').text());
 
   new MGApp.CatalogView({
     el: $('#mtab1'),

@@ -1,0 +1,26 @@
+<div id="items-grid" class="items">
+  <h2>Похожие блюда</h2>
+  {% if items|length > 0 %}
+    <ul>
+      {% for item in items %}
+        {% if loop.index0 < 4 %}
+        <li{% if loop.last %} class="nth"{% endif %}>
+          {{ include('NSCatalogBundle:Items:cell.html.twig', { 'item': item }) }}
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    var suggestProducts = new MGApp.ProductCollection();
+    suggestProducts.url = '{{ path('mg_product_add') }}';
+
+    new MGApp.CatalogView({
+      el: $('#items-grid'),
+      collection: suggestProducts
+    });
+  });
+</script>
