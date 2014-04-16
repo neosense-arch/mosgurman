@@ -33,20 +33,21 @@
         </div>
         <div class="product-block-right">
           <p>{{ item.settings.brief|raw }}</p>
-          <form action="">
+          <form id="items-selector" action="">
             <fieldset>
               <ul>
                 {% for price in item.settings.prices %}
                   {% if loop.index < 4 %}
-                    <li>
+                    <li data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
                       <b>{{ price.weight }} г</b>
                       <strong>{{ price.price }} руб</strong>
-                      <select id="seldef1" class="area4" title="1 шт.">
-                        <option>1 шт.</option>
-                        <option>2 шт.</option>
-                        <option>3 шт.</option>
-                        <option>4 шт.</option>
-                        <option>5 шт.</option>
+                      <select class="area4">
+                        <option value="0">Не выбрано</option>
+                        <option value="1">1 штука</option>
+                        <option value="2">2 штуки</option>
+                        <option value="3">3 штуки</option>
+                        <option value="4">4 штуки</option>
+                        <option value="5">5 штук</option>
                       </select>
                     </li>
                   {% endif %}
@@ -63,12 +64,26 @@
   </div>
 </div>
 
+{% javascripts
+  '@MGFrontBundle/Resources/public/js/app/ProductModel.js'
+  '@MGFrontBundle/Resources/public/js/app/ItemView.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
 <script language="javascript">
   $(function () {
     $("#pikame").PikaChoose();
-  });
-
-  jcf.lib.domReady(function () {
     jcf.customForms.replaceAll();
+
+    var products = new MGApp.ProductCollection();
+
+    products.url = '{{ path('mg_product_add') }}';
+    products.length = parseInt($('.cart > .number > a').text());
+
+    new MGApp.ItemView({
+      el: $('#items-selector'),
+      collection: products,
+      jcf: jcf
+    });
   });
 </script>
