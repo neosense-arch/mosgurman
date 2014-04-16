@@ -49,12 +49,7 @@ MGApp.CartView = Backbone.View.extend({
     product.destroy({
       success: function (model, response, options) {
         var code = options.xhr.status;
-
-        switch (code) {
-          default:
-            self.removeBasketBlock(model.id);
-            break;
-        }
+        self.removeBasketBlock(model.id);
       },
       error: function (model, response, options) {
         var code = options.xhr.status;
@@ -83,20 +78,17 @@ MGApp.CartView = Backbone.View.extend({
   },
 
   addProduct: function () {
-    this.incrementProductCount();
+    this.redrawProductCount();
     this.redrawButton();
   },
 
   removeBasketBlock: function (id) {
     var $block = this.$('div[data-order-id="' + id + '"]');
 
-    this._costs[$block.index()] = 0;
+    this._costs[id] = 0;
+    $block.remove();
 
-    $block.fadeOut('normal', function () {
-      this.remove();
-    });
-
-    this.incrementProductCount();
+    this.redrawProductCount();
     this.calculateSummaryPrice();
   },
 
@@ -109,7 +101,7 @@ MGApp.CartView = Backbone.View.extend({
     var count = $basketBlock.find('#count-selector').val();
     var cost = parseInt(price) * parseInt(count);
 
-    this._costs[$basketBlock.index()] = cost;
+    this._costs[$basketBlock.data('order-id')] = cost;
 
     $basketBlock
       .children('.cost')
@@ -122,9 +114,9 @@ MGApp.CartView = Backbone.View.extend({
   calculateSummaryPrice: function () {
     var totalPrice = 0;
 
-    $.each(this._costs, function () {
-      totalPrice += this;
-    });
+    for (var i in this._costs) {
+      totalPrice += this._costs[i];
+    }
 
     this.$('.in-total > span > strong').text(totalPrice + ' руб');
   },
