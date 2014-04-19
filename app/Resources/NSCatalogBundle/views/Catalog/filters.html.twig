@@ -1,0 +1,63 @@
+{% set nomeat = false %}
+{% set hot = false %}
+{% set season = false %}
+{% set sweet = false %}
+
+{% for item in items %}
+  {% if item.settings.group == 'nomeat' %}
+    {% set nomeat = true %}
+  {% endif %}
+
+  {% if item.settings.group == 'hot' %}
+    {% set hot = true %}
+  {% endif %}
+
+  {% if item.settings.group == 'season' %}
+    {% set season = true %}
+  {% endif %}
+
+  {% if item.settings.group == 'sweet' %}
+    {% set sweet = true %}
+  {% endif %}
+{% endfor %}
+
+<ul class="tabset multi-tabset">
+  <li>
+    <a href="#m1tab1" class="active">
+      <img src="{{ asset('bundles/mgfront/images/all.png') }}">
+      <span>Все пироги</span>
+    </a>
+  </li>
+  {% if hot %}
+    <li>
+      <a href="#m1tab2">
+        <img src="{{ asset('bundles/mgfront/images/hot.png') }}">
+        <span>Острые</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if nomeat %}
+    <li>
+      <a href="#m1tab3">
+        <img src="{{ asset('bundles/mgfront/images/nomeat.png') }}">
+        <span>Постные</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if sweet %}
+    <li>
+      <a href="#m1tab4">
+        <img src="{{ asset('bundles/mgfront/images/sweet.png') }}">
+        <span>Сладкие</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if season %}
+    <li>
+      <a href="#m1tab5">
+        <img src="{{ asset('bundles/mgfront/images/season.png') }}">
+        <span>Сезонные</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>

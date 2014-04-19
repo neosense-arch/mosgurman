@@ -13,8 +13,7 @@
           <div class="img-basket">
             <a href="{{ url('ns_catalog_item', { 'categorySlug': order.item.category.slug, 'itemSlug': order.item.slug}) }}">
               <img src="{{ ('/upload/j/' ~ order.item.settings.photo)|apply_filter('cart_cell') }}"
-                   alt="{{ order.item.title }}"
-                   width="147" height="84"/>
+                   alt="{{ order.item.title }}" />
             </a>
           </div>
         </div>
