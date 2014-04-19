@@ -20,12 +20,16 @@
               {% if item.settings.photos|length > 1 %}
                 {% for photo in item.settings.photos %}
                   <li{% if loop.last %} class="last"{% endif %}>
-                    <a href=""><img src="{{ '/upload/j/' ~ photo }}"/></a>
+                    <a href="">
+                      <img src="{{ ('/upload/j/' ~ photo)|apply_filter('catalog_item_detail_page') }}"/>
+                    </a>
                   </li>
                 {% endfor %}
               {% else %}
                 <li class="last">
-                  <a href=""><img src="{{ '/upload/j/' ~ item.settings.photo }}"/></a>
+                  <a href="">
+                    <img src="{{ ('/upload/j/' ~ item.settings.photo)|apply_filter('catalog_item_detail_page') }}"/>
+                  </a>
                 </li>
               {% endif %}
             </ul>

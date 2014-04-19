@@ -55,6 +55,14 @@ avalanche_imagine:
             type:    thumbnail
             options: { size: [800, 800], mode: inset }
 
+        catalog_item_detail_page:
+            type: thumbnail
+            options: { size: [500, 400], mode: inset }
+
+        catalog_grid_cell:
+            type: thumbnail
+            options: { size: [230, 150], mode: inset }
+
 # NS Admin
 ns_admin:
     bundles: [ NSCmsBundle, NSUserBundle, NSCatalogBundle, NSAdminBundle, MGFrontBundle ]

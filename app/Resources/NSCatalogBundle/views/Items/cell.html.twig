@@ -12,7 +12,7 @@
 </div>
 <div class="item-img">
   <a href="{{ url('ns_catalog_item', { 'categorySlug': item.category.slug, 'itemSlug': item.slug}) }}">
-    <img src="{{ '/upload/j/' ~ item.settings.photo }}" alt="{{ item.title }}" width="232" height="150">
+    <img src="{{ ('/upload/j/' ~ item.settings.photo)|apply_filter('catalog_grid_cell') }}" alt="{{ item.title }}" width="232" height="150">
   </a>
 </div>
 
