@@ -63,6 +63,10 @@ avalanche_imagine:
             type: thumbnail
             options: { size: [230, 150], mode: inset }
 
+        cart_cell:
+            type: thumbnail
+            options: { size: [150, 90], mode: inset }
+
 # NS Admin
 ns_admin:
     bundles: [ NSCmsBundle, NSUserBundle, NSCatalogBundle, NSAdminBundle, MGFrontBundle ]

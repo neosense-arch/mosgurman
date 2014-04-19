@@ -12,7 +12,7 @@
         <div class="block-img">
           <div class="img-basket">
             <a href="{{ url('ns_catalog_item', { 'categorySlug': order.item.category.slug, 'itemSlug': order.item.slug}) }}">
-              <img src="{{ '/upload/j/' ~ order.item.settings.photo }}"
+              <img src="{{ ('/upload/j/' ~ order.item.settings.photo)|apply_filter('cart_cell') }}"
                    alt="{{ order.item.title }}"
                    width="147" height="84"/>
             </a>
@@ -20,7 +20,7 @@
         </div>
         <div class="basket-description">
           <span>{{ order.item.title }}</span>
-          <p>{{ order.item.settings.brief[:130] ~ '...' }}</p>
+          <p>{{ (order.item.settings.brief[:130] ~ '...')|raw }}</p>
         </div>
         {% if order.weight %}
         <div class="weight">
