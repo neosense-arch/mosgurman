@@ -59,7 +59,7 @@ class ItemSettingsType extends AbstractType
                 'label'    => 'Торговые предложения',
                 'required' => false,
                 'type'     => 'sellOffer',
-                'rows'     => array('weight', 'price'),
+                'rows'     => array('weight', 'price', 'measure'),
             ))
         ;
     }

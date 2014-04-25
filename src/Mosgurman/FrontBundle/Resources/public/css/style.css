@@ -613,6 +613,7 @@ ul.tabset a.active span{
 	font-size:12px;
 	margin:12px 0 10px;
 	background-position:10px 0;
+    white-space: nowrap;
 }
 
 .price ul li strong{

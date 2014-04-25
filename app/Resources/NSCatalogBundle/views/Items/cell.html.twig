@@ -23,11 +23,11 @@
     {% for price in item.settings.prices %}
       {% if loop.index < 4 %}
         <li>
-          <span>{{ price.weight }} г</span>
+          <span>{{ price.weight }} {{ price.measure|default('г') }}</span>
           <strong>{{ price.price }} руб</strong>
 
           <div class="drop">
-            <span>{{ price.weight }} г</span>
+            <span>{{ price.weight }} {{ price.measure|default('г') }}</span>
             <strong>{{ price.price }} руб</strong>
             <ul data-product-id="{{ item.id }}" data-product-weigth="{{ price.weight }}">
               <li><a href="#">1 штука</a></li>
