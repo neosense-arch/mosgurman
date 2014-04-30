@@ -1,6 +1,8 @@
 <ul>
-  <li><a href="#">О компании</a></li>
-  <li><a href="#">Оплата и доставка</a></li>
-  <li><a href="#">Контакты</a></li>
-  <li class="last"><a href="#">Организация выездных банкетов</a></li>
+  {% for item in menu.children if item.displayed %}
+    {# TODO: Hardcode! #}
+    <li{% if loop.index == 4 %} class="last"{% endif %}>
+      <a href="{{ item.uri }}">{{ item.label }}</a>
+    </li>
+  {% endfor %}
 </ul>
